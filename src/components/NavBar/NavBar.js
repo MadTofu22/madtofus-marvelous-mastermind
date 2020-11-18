@@ -2,18 +2,26 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
-class NavBar extends Component {
-  state = {
-    heading: 'NavBar',
-  };
+import NavButton from '../NavButton/NavButton';
 
-  render() {
-    return (
-      <div>
-        <h2>{this.state.heading}</h2>
-      </div>
-    );
-  }
+class NavBar extends Component {
+
+	render() {
+		console.log(this.props);
+		return (
+			<div>
+				{/*
+				Add Profile components here 
+				will need conditional rendering
+				to decide if it has login or profile name
+				*/}
+
+				{this.props.store.pages.map(page => {
+					return <NavButton key={page.id} page={page} />
+				})}
+			</div>
+		);
+	}
 }
 
 export default connect(mapStoreToProps)(NavBar);

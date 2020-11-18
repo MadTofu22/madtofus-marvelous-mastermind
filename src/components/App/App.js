@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {HashRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
+import {HashRouter as Router, Route, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import './App.css';
 
@@ -16,7 +16,9 @@ class App extends Component {
       <Router>
         <NavBar />
 
-        
+        <Route exact path='/'>
+          <Redirect to='/home' />
+        </Route>
       </Router>
     );
   }

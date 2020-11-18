@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import {withRouter} from 'react-router';
 
-class TemplateClass extends Component {
-  state = {
-    heading: 'Class Component',
-  };
+class NavButton extends Component {
 
-  render() {
-    return (
-      <div>
-        <h2>{this.state.heading}</h2>
-      </div>
-    );
-  }
+    // This function handles moving the User to the next page
+    handleClick = () => {
+        this.props.history.push(this.props.page.path);
+    }
+
+    render() {
+        return (
+            <div className='buttonContainer' onClick={this.handleClick}>
+                <h2>{this.props.page.label}</h2>
+            </div>
+        );
+    }
 }
 
-export default connect(mapStoreToProps)(TemplateClass);
+const NavButtonWithRouter = withRouter(NavButton);
+export default connect(mapStoreToProps)(NavButtonWithRouter);
