@@ -5,6 +5,7 @@ import './App.css';
 
 // Component imports
 import NavBar from '../NavBar/NavBar';
+import RegistrationDisplay from '../RegistrationDisplay/RegistrationDisplay';
 
 class App extends Component {
   componentDidMount() {
@@ -19,6 +20,8 @@ class App extends Component {
         <Route exact path='/'>
           <Redirect to='/home' />
         </Route>
+
+        <Route exact path='/register' component={RegistrationDisplay} />
       </Router>
     );
   }

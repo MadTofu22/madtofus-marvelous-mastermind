@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import {withRouter} from 'react-router';
+import { withRouter } from 'react-router';
 
 class NavButton extends Component {
 
@@ -13,7 +13,7 @@ class NavButton extends Component {
     render() {
         return (
             <div className='buttonContainer' onClick={this.handleClick}>
-                <h2>{this.props.page.label}</h2>
+                <h3>{this.props.page.label}</h3>
             </div>
         );
     }
