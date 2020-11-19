@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import './App.css';
 
 // Component imports
-import NavBar from '../NavBar/NavBar';
+import Header from '../Header/Header';
 import RegistrationDisplay from '../RegistrationDisplay/RegistrationDisplay';
 
 class App extends Component {
@@ -15,7 +15,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <NavBar />
+        <Header />
 
         <Route exact path='/'>
           <Redirect to='/home' />

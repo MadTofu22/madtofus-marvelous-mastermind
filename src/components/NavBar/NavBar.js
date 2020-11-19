@@ -9,7 +9,7 @@ class NavBar extends Component {
 	render() {
 		console.log(this.props);
 		return (
-			<div>
+			<div className='navBarWrapper'>
 				{/*
 				Add Profile components here 
 				will need conditional rendering

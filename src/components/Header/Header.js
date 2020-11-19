@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import './Header.css';
 
-class TemplateClass extends Component {
-  state = {
-    heading: 'Class Component',
-  };
+import NavBar from '../NavBar/NavBar';
 
-  render() {
-    return (
-      <div>
-        <h2>{this.state.heading}</h2>
-      </div>
-    );
-  }
+class Header extends Component {
+
+	render() {
+		return (
+			<section className='headerWrapper'>
+				<NavBar />
+			</section>
+		);
+	}
 }
 
-export default connect(mapStoreToProps)(TemplateClass);
+export default connect(mapStoreToProps)(Header);

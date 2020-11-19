@@ -7,14 +7,22 @@ class NavButton extends Component {
 
     // This function handles moving the User to the next page
     handleClick = () => {
+        
         this.props.history.push(this.props.page.path);
     }
 
     render() {
         return (
-            <div className='buttonContainer' onClick={this.handleClick}>
-                <h3>{this.props.page.label}</h3>
-            </div>
+          <div
+            className={
+              this.props.page.isActive
+                ? "navButtonContainer_active"
+                : "navButtonContainer"
+            }
+            onClick={this.handleClick}
+          >
+            <h3 className="navButtonLabel">{this.props.page.label}</h3>
+          </div>
         );
     }
 }
