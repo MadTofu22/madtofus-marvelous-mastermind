@@ -1,11 +1,10 @@
-headerWrapper {
-    
+.headerWrapper {
+    background-color: rgba(153, 50, 204, 1);
     display: flex;
     max-height: 90px;
 }
 
 .navBarWrapper {
-    background-color: rgba(153, 50, 204, 1);
     align-items: center;
     display: inline-flex;
     height: 90px;
