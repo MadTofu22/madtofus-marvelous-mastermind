@@ -12,6 +12,13 @@
     min-width: 50%;
 }
 
+.headerAvatar {
+    height: 80px;
+    width: 80px;
+    margin: 5px;
+    box-shadow: 3px 3px 20px black;
+}
+
 .navButtonContainer {
     border: 5px solid rgba(153, 50, 224);
     border-radius: 50px;
