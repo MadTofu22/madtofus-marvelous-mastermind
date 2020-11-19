@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {HashRouter as Router, Route, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
+import mapStoreToProps from "../../redux/mapStoreToProps";
 import './App.css';
 
 // Component imports
@@ -27,4 +28,4 @@ class App extends Component {
   }
 }
 
-export default connect()(App);
+export default connect(mapStoreToProps)(App);

@@ -7,7 +7,6 @@ import NavButton from '../NavButton/NavButton';
 class NavBar extends Component {
 
 	render() {
-		console.log(this.props);
 		return (
 			<div className='navBarWrapper'>
 				{/*
