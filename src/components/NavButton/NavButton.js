@@ -7,7 +7,7 @@ class NavButton extends Component {
 
     // This function handles moving the User to the next page
     handleClick = () => {
-        
+        this.props.dispatch({type: 'NAVIGATE', payload: this.props.page.path});
         this.props.history.push(this.props.page.path);
     }
 
