@@ -10,10 +10,10 @@ class SelfProfile extends Component {
         this.state = {
             id: this.props.store.user.id,
             username: this.props.store.user.username,
-            bio: this.props.store.user.bio || '',
-            avatar_url: this.props.store.user.avatar_url || '',
-            first_name: this.props.store.user.first_name || '',
-            last_name: this.props.store.user.last_name || ''
+            bio: this.props.store.user.bio,
+            avatar_url: this.props.store.user.avatar_url,
+            first_name: this.props.store.user.first_name ,
+            last_name: this.props.store.user.last_name
         }
     }
 
@@ -58,7 +58,11 @@ class SelfProfile extends Component {
                         className='selfProfileInput'
                         name='userAvatarUrlInput'
                         onChange={event => this.handleChangeFor(event, 'avatar_url')}
-                        value={this.state.avatar_url}
+                        value={this.state.avatar_url ?
+                            this.state.avatar_url
+                            :
+                            ''
+                        }
                     />
                 </label>
                 <label htmlFor='userBioInput'>
@@ -68,7 +72,11 @@ class SelfProfile extends Component {
                         className='selfProfileInput'
                         name='userBioInput'
                         onChange={event => this.handleChangeFor(event, 'bio')}
-                        value={this.state.bio}
+                        value={this.state.bio ?
+                            this.state.bio
+                            :
+                            ''
+                        }
                     />
                 </label>
                 <label htmlFor='userFirstNameInput'>
@@ -78,7 +86,11 @@ class SelfProfile extends Component {
                         className='selfProfileInput'
                         name='userFirstNameInput'
                         onChange={event => this.handleChangeFor(event, 'first_name')}
-                        value={this.state.first_name}
+                        value={this.state.first_name ? 
+                        this.state.first_name
+                        :
+                        ''
+                        }
                     />
                 </label>
                 <label htmlFor='userLastNameInput'>
@@ -88,7 +100,11 @@ class SelfProfile extends Component {
                         className='selfProfileInput'
                         name='userLastNameInput'
                         onChange={event => this.handleChangeFor(event, 'last_name')}
-                        value={this.state.last_name}
+                        value={this.state.last_name ?
+                        this.state.last_name
+                        :
+                        ''
+                        }
                     />
                 </label>
 

@@ -44,10 +44,10 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
   if (req.user.id === Number(req.params.id)) {
     const queryText = `
       UPDATE "user" 
-      SET "bio" = $1 
-      AND "avatar_url" = $2
-      AND "first_name" = $3
-      AND "last_name" = $4
+      SET "bio" = $1 ,
+      "avatar_url" = $2,
+      "first_name" = $3,
+      "last_name" = $4
       WHERE "id" = $5;`;
 
     const queryParams = [
