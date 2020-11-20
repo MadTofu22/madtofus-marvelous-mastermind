@@ -39,31 +39,37 @@ router.get('/:name', (req, res) => {
 
 // This handles updating the editable field in user profile.
 // The data received will be a full object of all existing user profile data with any changed info.
-router.put('/', rejectUnauthenticated, (req, res) => {
-  const queryText = `
-    UPDATE "user" 
-    SET "bio" = $1 
-    AND "avatar_url" = $2
-    AND "first_name" = $3
-    AND "last_name" = $4
-    WHERE "id" = $5;`;
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+  console.log('in user put, req.body:', req.body);
+  if (req.user.id === Number(req.params.id)) {
+    const queryText = `
+      UPDATE "user" 
+      SET "bio" = $1 
+      AND "avatar_url" = $2
+      AND "first_name" = $3
+      AND "last_name" = $4
+      WHERE "id" = $5;`;
 
-  const queryParams = [
-    req.body.bio,
-    req.body.avatar_url,
-    req.body.first_name,
-    req.body.last_name,
-    req.user.id
-  ]
+    const queryParams = [
+      req.body.bio,
+      req.body.avatar_url,
+      req.body.first_name,
+      req.body.last_name,
+      req.user.id
+    ]
 
-  pool.query(queryText, queryParams)
-    .then(result => {
-      res.sendStatus(202);
-    })
-    .catch(error => {
-      console.log(error);
-      res.sendStatus(202);
-    });
+    pool.query(queryText, queryParams)
+      .then(result => {
+        res.sendStatus(202);
+      })
+      .catch(error => {
+        console.log(error);
+        res.sendStatus(202);
+      });
+  } else {
+    res.sendStatus(403);
+  }
+
 });
 
 router.delete('/:id', (req, res) => {

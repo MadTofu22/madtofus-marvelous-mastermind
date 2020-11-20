@@ -35,8 +35,8 @@ function* fetchProfile(action) {
 
 function* updateProfile(action) {
   try {
-    yield axios.post(`/api/user/${action.payload.id}`, action.payload);
-    yield put({ type: 'FETCH_PROFILE'});
+    yield axios.put(`/api/user/${action.payload.id}`, action.payload);
+    yield put({ type: 'FETCH_PROFILE', payload: action.payload.username});
   } catch (error) {
     console.log('Profile post request failed', error);
   }
