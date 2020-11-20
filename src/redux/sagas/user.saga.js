@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest, takeEvery } from 'redux-saga/effects';
 
 // worker Saga: will be fired on "FETCH_USER" actions
 function* fetchUser() {
@@ -24,8 +24,28 @@ function* fetchUser() {
   }
 }
 
+function* fetchProfile(action) {
+  try {
+    const response = yield axios.get(`/api/user/${action.payload}`);
+    yield put({ type: 'SET_PROFILE', payload: response.data});
+  } catch (error) {
+    console.log('Profile get request failed', error);
+  }
+}
+
+function* updateProfile(action) {
+  try {
+    yield axios.post(`/api/user/${action.payload.id}`, action.payload);
+    yield put({ type: 'FETCH_PROFILE'});
+  } catch (error) {
+    console.log('Profile post request failed', error);
+  }
+}
+
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
+  yield takeEvery('FETCH_PROFILE', fetchProfile);
+  yield takeEvery('UPDATE_PROFILE', updateProfile);
 }
 
 export default userSaga;

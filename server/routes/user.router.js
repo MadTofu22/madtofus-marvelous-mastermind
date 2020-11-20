@@ -18,13 +18,12 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.get('/:name', (req, res) => {
   const queryText = `SELECT * FROM "user" WHERE "username" = $1;`;
   
-  pool
-    .query(queryText, [req.params.name])
+  pool.query(queryText, [req.params.name])
     .then(result => {
       // Define profileData object to prevent password, first_name, and last_name from being sent to client.
       const profileData = {
-        id: result.rows[0].id,
         username: result.rows[0].username,
+        bio: result.rows[0].bio,
         avatar_url: result.rows[0].avatar_url,
         total_wins: result.rows[0].total_wins,
         total_losses: result.rows[0].total_losses,
@@ -40,8 +39,31 @@ router.get('/:name', (req, res) => {
 
 // This handles updating the editable field in user profile.
 // The data received will be a full object of all existing user profile data with any changed info.
-router.put('/:id', (req, res) => {
-  res.sendStatus(202);
+router.put('/', rejectUnauthenticated, (req, res) => {
+  const queryText = `
+    UPDATE "user" 
+    SET "bio" = $1 
+    AND "avatar_url" = $2
+    AND "first_name" = $3
+    AND "last_name" = $4
+    WHERE "id" = $5;`;
+
+  const queryParams = [
+    req.body.bio,
+    req.body.avatar_url,
+    req.body.first_name,
+    req.body.last_name,
+    req.user.id
+  ]
+
+  pool.query(queryText, queryParams)
+    .then(result => {
+      res.sendStatus(202);
+    })
+    .catch(error => {
+      console.log(error);
+      res.sendStatus(202);
+    });
 });
 
 router.delete('/:id', (req, res) => {

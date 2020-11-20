@@ -7,6 +7,7 @@ import './App.css';
 // Component imports
 import Header from '../Header/Header';
 import RegistrationDisplay from '../RegistrationDisplay/RegistrationDisplay';
+import ProfileDisplay from '../ProfileDisplay/ProfileDisplay';
 
 class App extends Component {
   componentDidMount() {
@@ -22,6 +23,7 @@ class App extends Component {
           <Redirect to='/home' />
         </Route>
 
+        <Route path={'/profile/:name'} component={ProfileDisplay} />
         <Route exact path='/register' component={RegistrationDisplay} />
       </Router>
     );
