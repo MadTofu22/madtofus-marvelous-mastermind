@@ -38,7 +38,16 @@ function* updateProfile(action) {
     yield axios.put(`/api/user/${action.payload.id}`, action.payload);
     yield put({ type: 'FETCH_PROFILE', payload: action.payload.username});
   } catch (error) {
-    console.log('Profile post request failed', error);
+    console.log('Profile update request failed', error);
+  }
+}
+
+function* deleteProfile(action) {
+  try{
+    yield axios.delete(`/api/user/${action.payload}`);
+    yield put({type: 'LOGOUT'});
+  } catch (error) {
+    console.log('Profile delete request failed', error);
   }
 }
 
@@ -46,6 +55,7 @@ function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
   yield takeEvery('FETCH_PROFILE', fetchProfile);
   yield takeEvery('UPDATE_PROFILE', updateProfile);
+  yield takeEvery('DELETE_PROFILE', deleteProfile);
 }
 
 export default userSaga;

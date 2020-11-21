@@ -64,16 +64,43 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
       })
       .catch(error => {
         console.log(error);
-        res.sendStatus(202);
+        res.sendStatus(403);
       });
   } else {
+    console.log('Incorrect user attempting to access this profile.')
     res.sendStatus(403);
   }
 
 });
 
-router.delete('/:id', (req, res) => {
-  res.sendStatus(202);
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+  console.log('in delete endpoint, req.params.id:', req.params.id, 'vs req.user.id:', req.user.id);
+  if (req.user.id === Number(req.params.id)) {
+    const gamesQuery = 'DELETE FROM "games" WHERE "user_id" = $1;';
+    pool
+      .query(gamesQuery, [req.user.id])
+      .then(result => {
+        console.log(result.command, 'in "games" successful');
+        const userQuery = 'DELETE FROM "user" WHERE "id" = $1;';
+        pool
+          .query(userQuery, [req.user.id])
+          .then(result => {
+            console.log(result.command, 'in "user" successful');
+          })
+          .catch(error => {
+            console.log(error);
+            res.sendStatus(403);    
+          });
+        res.sendStatus(202);
+      })
+      .catch(error => {
+        console.log(error);
+        res.sendStatus(403);
+      });
+  } else {
+    console.log('Incorrect user attempting to access this profile.');
+    res.sendStatus(400);
+  }
 })
 
 // Handles fetching win/loss ratio and calculating ranks

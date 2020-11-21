@@ -30,13 +30,12 @@ class SelfProfile extends Component {
 
     deleteProfile = () => {
         let firstConfirm = window.confirm('Are you sure you want to delete your profile?');
-        let finalConfirm = window.confirm('Are you absolutely sure you want to delete this profile? This is the final confirmation and there is no turning back if you select Yes!');
+        let finalConfirm = window.confirm('Are you absolutely sure you want to delete this profile? This is the final confirmation and there is no turning back if you select OK!');
 
         if (firstConfirm) {
             if (finalConfirm) {
-                this.props.dispatch({type: 'LOGOUT'});
+                // this.props.dispatch({type: 'LOGOUT'});
                 this.props.dispatch({type: 'DELETE_PROFILE', payload: this.state.id});
-                
                 this.props.history.push('/home');
             }
         }
