@@ -15,7 +15,7 @@ class LeaderboardDisplay extends Component {
     render () {
         return (
             <section>
-                leaderboard display
+                {this.props.store.leaderboard}
             </section> 
         );
     }
