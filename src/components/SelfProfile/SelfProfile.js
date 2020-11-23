@@ -45,82 +45,93 @@ class SelfProfile extends Component {
         return (
             <section className='profileWrapper' name='selfProfile'>
                 {/* {JSON.stringify(this.props.store.profile)} */}
-                <img 
-					className='profileAvatar'
-					src={this.props.store.profile.avatar_url}
-					alt={`Avatar for ${this.props.store.profile.username}`}
-				/>
-                <label htmlFor='userAvatarUrlInput'>
-                    Avatar URL:
-                    <input
-                        type='text'
-                        className='selfProfileInput'
-                        name='userAvatarUrlInput'
-                        onChange={event => this.handleChangeFor(event, 'avatar_url')}
-                        value={this.state.avatar_url ?
-                            this.state.avatar_url
+                <div className='profileElementContainer' id='detailsContainer'>
+                    <img 
+                        className='profileAvatar'
+                        src={this.props.store.profile.avatar_url}
+                        alt={`Avatar for ${this.props.store.profile.username}`}
+                    />
+                    <br/>
+                    <label htmlFor='userAvatarUrlInput'>
+                        Avatar URL: <br/>
+                        <input
+                            type='text'
+                            className='selfProfileInput'
+                            name='userAvatarUrlInput'
+                            onChange={event => this.handleChangeFor(event, 'avatar_url')}
+                            value={this.state.avatar_url ?
+                                this.state.avatar_url
+                                :
+                                ''
+                            }
+                        />
+                    </label>
+                    <br/>
+                    <label htmlFor='userFirstNameInput'>
+                        First Name:<br/>
+                        <input
+                            type='text'
+                            className='selfProfileInput'
+                            name='userFirstNameInput'
+                            onChange={event => this.handleChangeFor(event, 'first_name')}
+                            value={this.state.first_name ? 
+                            this.state.first_name
                             :
                             ''
-                        }
-                    />
-                </label>
-                <label htmlFor='userBioInput'>
-                    Bio:
-                    <input
-                        type='textarea'
-                        className='selfProfileInput'
-                        name='userBioInput'
-                        onChange={event => this.handleChangeFor(event, 'bio')}
-                        value={this.state.bio ?
-                            this.state.bio
+                            }
+                        />
+                    </label>
+                    <br/>
+                    <label htmlFor='userLastNameInput'>
+                        Last Name:<br/>
+                        <input
+                            type='text'
+                            className='selfProfileInput'
+                            name='userLastNameInput'
+                            onChange={event => this.handleChangeFor(event, 'last_name')}
+                            value={this.state.last_name ?
+                            this.state.last_name
                             :
                             ''
-                        }
-                    />
-                </label>
-                <label htmlFor='userFirstNameInput'>
-                    First Name:
-                    <input
-                        type='text'
-                        className='selfProfileInput'
-                        name='userFirstNameInput'
-                        onChange={event => this.handleChangeFor(event, 'first_name')}
-                        value={this.state.first_name ? 
-                        this.state.first_name
-                        :
-                        ''
-                        }
-                    />
-                </label>
-                <label htmlFor='userLastNameInput'>
-                    Last Name:
-                    <input
-                        type='text'
-                        className='selfProfileInput'
-                        name='userLastNameInput'
-                        onChange={event => this.handleChangeFor(event, 'last_name')}
-                        value={this.state.last_name ?
-                        this.state.last_name
-                        :
-                        ''
-                        }
-                    />
-                </label>
-
-                <button 
-                    className='submitButton' 
-                    name='updateProfileButton'
-                    onClick={this.updateProfile}
-                >
-                    Update Profile
-                </button>
-                <button 
-                    className='submitButton' 
-                    name='deleteProfileButton'
-                    onClick={this.deleteProfile}
-                >
-                    Delete Profile
-                </button>
+                            }
+                        />
+                    </label>
+                    <br/>
+                    <button 
+                        className='submitButton' 
+                        name='updateProfileButton'
+                        onClick={this.updateProfile}
+                    >
+                        Update Profile
+                    </button>
+                    <br/>
+                    <button 
+                        className='submitButton' 
+                        name='deleteProfileButton'
+                        onClick={this.deleteProfile}
+                    >
+                        Delete Profile
+                    </button>
+                </div>
+                <div className='profileElementContainer'>
+                    <label htmlFor='userBioInput'>
+                        Bio: <br/>
+                        <textarea
+                            className='selfProfileInput'
+                            name='userBioInput'
+                            id='userBioInput'
+                            onChange={event => this.handleChangeFor(event, 'bio')}
+                            value={this.state.bio ?
+                                this.state.bio
+                                :
+                                ''
+                            }
+                        />
+                    </label>
+                </div>
+                <div className='profileElementContainer'>
+                    
+                </div>
             </section>
         );
     }

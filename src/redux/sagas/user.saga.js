@@ -43,11 +43,19 @@ function* updateProfile(action) {
 }
 
 function* deleteProfile(action) {
-  try{
+  try {
     yield axios.delete(`/api/user/${action.payload}`);
     yield put({type: 'LOGOUT'});
   } catch (error) {
     console.log('Profile delete request failed', error);
+  }
+}
+
+function* fetchRanks() {
+  try {
+
+  } catch (error) {
+    console.log('Error fetching leaderboard data', error);
   }
 }
 
@@ -56,6 +64,7 @@ function* userSaga() {
   yield takeEvery('FETCH_PROFILE', fetchProfile);
   yield takeEvery('UPDATE_PROFILE', updateProfile);
   yield takeEvery('DELETE_PROFILE', deleteProfile);
+  yield takeEvery('FETCH_RANKS', fetchRanks);
 }
 
 export default userSaga;

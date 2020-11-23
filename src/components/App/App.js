@@ -8,6 +8,9 @@ import './App.css';
 import Header from '../Header/Header';
 import RegistrationDisplay from '../RegistrationDisplay/RegistrationDisplay';
 import ProfileDisplay from '../ProfileDisplay/ProfileDisplay';
+import LeaderboardDisplay from '../LeaderboardDisplay/LeaderboardDisplay';
+import AboutDisplay from '../AboutDisplay/AboutDisplay';
+import InstructionsDisplay from '../InstructionsDisplay/InstructionsDisplay';
 
 class App extends Component {
   componentDidMount() {
@@ -23,10 +26,10 @@ class App extends Component {
           <Redirect to='/home' />
         </Route>
 
-        {/* <Route exact path={'/profile'}>
-          <Redirect to={`/profile/${this.props.store.user.username}`} />
-        </Route> */}
-        <Route path={'/profile/:name'} component={ProfileDisplay} />
+        <Route exact path='/about' component={AboutDisplay} />
+        <Route exact path='/instructions' component={InstructionsDisplay} />
+        <Route exact path='/ranks' component={LeaderboardDisplay} />
+        <Route path='/profile/:name' component={ProfileDisplay} />
         <Route exact path='/register' component={RegistrationDisplay} />
       </Router>
     );

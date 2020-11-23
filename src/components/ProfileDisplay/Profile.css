@@ -1,4 +1,35 @@
+.profileWrapper {
+    display: flex;
+    justify-content: center;
+    margin: 2.5%;
+}
+
+#detailsContainer {
+    width: 288px;
+    justify-content: center;
+}
 .profileAvatar {
+    width: 288px;
+    height: 288px;
+}
+
+.selfProfileInput {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+#userBioInput {
+    width: 576px;
+    height: 300px;
+    margin: 1%;
+    padding: 5px;
+}
+
+.submitButton {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    font-size: 24px;
     width: 144px;
-    height: 144px;
+    
 }
