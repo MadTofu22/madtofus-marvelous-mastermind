@@ -18,15 +18,7 @@ class OtherProfile extends Component {
 				<div className='bioContainer'>
 					{this.props.store.profile.bio}
 				</div>
-				<div className='Container'>
-					{this.props.store.profile.bio}
-				</div>
-				<div className='Container'>
-					{this.props.store.profile.bio}
-				</div>
-				<div className='Container'>
-					{this.props.store.profile.bio}
-				</div>
+				
 			</section>
 		);
 	}

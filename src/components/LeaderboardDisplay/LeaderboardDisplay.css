@@ -1,7 +1,18 @@
+/* .leaderboardDisplayWrapper {
+ width: 100%;
+} */
 
+.leaderboardTableContainer {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+}
 
 table, th, td {
-    border: solid 5px rgba(255, 255, 255, 0.2);
+    border: 5px solid rgba(153, 50, 224);
+    border-collapse: collapse;
     text-align: center;
-    /* border-collapse: collapse; */
+    font-size: 24px;
+    margin: 2.5% auto;
 }
+
