@@ -11,6 +11,7 @@ import ProfileDisplay from '../ProfileDisplay/ProfileDisplay';
 import LeaderboardDisplay from '../LeaderboardDisplay/LeaderboardDisplay';
 import AboutDisplay from '../AboutDisplay/AboutDisplay';
 import InstructionsDisplay from '../InstructionsDisplay/InstructionsDisplay';
+import GameDisplay from '../GameDisplay/GameDisplay';
 
 class App extends Component {
   componentDidMount() {
@@ -26,6 +27,7 @@ class App extends Component {
           <Redirect to='/home' />
         </Route>
 
+        <Route exact path='/home' component={GameDisplay} />
         <Route exact path='/about' component={AboutDisplay} />
         <Route exact path='/instructions' component={InstructionsDisplay} />
         <Route exact path='/ranks' component={LeaderboardDisplay} />
