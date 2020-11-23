@@ -12,12 +12,12 @@ const router = express.Router();
 //   total_losses: int
 // }
 router.get('/', (req, res) => {
-  const queryText = `SELECT "user"."username", sum("total_wins"/
+  const queryText = `SELECT "username", "total_wins", "total_losses", sum("total_wins"/
   CASE
     WHEN "total_losses"=0 THEN 1
     ELSE "total_losses"
   END) AS "win_loss_ratio"
-  FROM "user" GROUP BY "username"
+  FROM "user" GROUP BY "username", "total_wins", "total_losses"
   ORDER BY "win_loss_ratio" DESC;`;
 
   pool
