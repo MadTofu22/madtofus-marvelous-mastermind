@@ -53,7 +53,7 @@ function* deleteProfile(action) {
 
 function* fetchRanks() {
   try {
-    const leaderboards = yield axios.get('/api/user/ranks');
+    const leaderboards = yield axios.get('/api/ranks');
     yield put({type: 'SET_RANKS', payload: leaderboards.data});
   } catch (error) {
     console.log('Error fetching leaderboard data', error);

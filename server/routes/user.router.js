@@ -113,7 +113,7 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 //   total_losses: int
 // }
 router.get('/ranks', (req, res) => {
-  const queryText = `SELECT "username", sum("total_wins"/
+  const queryText = `SELECT "user"."username", sum("total_wins"/
   CASE
     WHEN "total_losses"=0 THEN 1
     ELSE "total_losses"
