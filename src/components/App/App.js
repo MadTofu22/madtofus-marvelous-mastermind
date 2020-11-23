@@ -23,6 +23,9 @@ class App extends Component {
           <Redirect to='/home' />
         </Route>
 
+        {/* <Route exact path={'/profile'}>
+          <Redirect to={`/profile/${this.props.store.user.username}`} />
+        </Route> */}
         <Route path={'/profile/:name'} component={ProfileDisplay} />
         <Route exact path='/register' component={RegistrationDisplay} />
       </Router>

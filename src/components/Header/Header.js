@@ -10,11 +10,10 @@ import UnregisteredUserWidget from '../UnregisteredUserWidget/UnregisteredUserWi
 import RegisteredUserWidget from "../RegisteredUserWidget/RegisteredUserWidget";
 
 class Header extends Component {
-
+	
 	render() {
 		return (
 			<section className='headerWrapper'>
-				{console.log(this)}
 				{this.props.store.user.id ?
 				<>
 					<img 

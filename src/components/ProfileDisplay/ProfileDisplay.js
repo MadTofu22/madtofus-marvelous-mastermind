@@ -15,6 +15,7 @@ class ProfileDisplay extends Component {
     }
 
     getProfile = () => {
+        //console.log('in ProfileDisplay getProfile, props: ', this.props)
         this.props.dispatch({
           type: "FETCH_PROFILE",
           payload: this.props.match.params.name,
@@ -22,12 +23,11 @@ class ProfileDisplay extends Component {
     }
 
     render () {
+        const isSelfProfile = this.props.store.user.username === this.props.store.profile.username;
         console.log('new profile page loaded for', this.props.match.params.name);
         return (
           <>
-            profile display
-            {this.props.store.profile.username ===
-            this.props.store.user.username ?
+            {isSelfProfile ?
               <SelfProfile />
             :
               <OtherProfile />

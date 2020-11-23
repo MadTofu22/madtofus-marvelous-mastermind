@@ -12,7 +12,7 @@ class SelfProfile extends Component {
             username: this.props.store.user.username,
             bio: this.props.store.user.bio,
             avatar_url: this.props.store.user.avatar_url,
-            first_name: this.props.store.user.first_name ,
+            first_name: this.props.store.user.first_name,
             last_name: this.props.store.user.last_name
         }
     }
