@@ -9,9 +9,17 @@ function* startNewGame () {
     }
 }
 
-function* updateGameState (action) {
+function* updateGameBoard (action) {
     try {
-        yield put({type: 'SET_GAME_STATE', payload: action.payload});
+        yield put({type: 'SET_GAME_BOARD', payload: action.payload});
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+function* updateGameResults (action) {
+    try {
+        yield put({type: 'SET_GAME_RESULTS', payload: action.payload});
     } catch (error) {
         console.log(error);
     }
@@ -27,7 +35,8 @@ function* updateHeldMarble (action) {
 
 function* gameSaga () {
     yield takeEvery('RESET_GAME', startNewGame);
-    yield takeEvery('UPDATE_GAME', updateGameState);
+    yield takeEvery('UPDATE_BOARD', updateGameBoard);
+    yield takeEvery('UPDATE_RESULTS', updateGameResults);
     yield takeEvery('UPDATE_HELD', updateHeldMarble);
 }
 

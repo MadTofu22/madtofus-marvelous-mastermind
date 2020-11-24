@@ -8,25 +8,13 @@ class GameBoard extends Component {
   
   state = {
     guessNumber: 0,
-    guessMatrix: [
-      ['empty', 'empty', 'empty', 'empty'],
-      ['empty', 'empty', 'empty', 'empty'],
-      ['empty', 'empty', 'empty', 'empty'],
-      ['empty', 'empty', 'empty', 'empty'],
-      ['empty', 'empty', 'empty', 'empty'],
-      ['empty', 'empty', 'empty', 'empty'],
-      ['empty', 'empty', 'empty', 'empty'],
-      ['empty', 'empty', 'empty', 'empty']
-    ]
   }
-
   
-
   render() {
     return (
       <div className='gameBoard'>
         <h2>board</h2>
-        {this.state.guessMatrix.map((rowMatrix, index) => {
+        {this.props.store.game.guesses.map((rowMatrix, index) => {
           return <GuessRow rowMatrix={rowMatrix} rowNumber={index} />
         })}
       </div>

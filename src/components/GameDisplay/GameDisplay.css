@@ -28,12 +28,12 @@
     border: 2px solid black;
     border-radius: 50%;
     width: 72px;
-    height: 72px;
+    height: 72px; 
     margin: 2.5%;
 }
 
 .emptyMarble {
-    background-color: black;
+    /* background-color: black; */
 }
 
 .redMarble {
@@ -58,4 +58,23 @@
 
 .whiteMarble {
     background-color: white;
+}
+
+.guessRowContainer {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid black;
+    border-radius: 20px;
+    width: 360px;
+    height: 90px;
+    margin: 1% auto;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.guessRowSlot {
+    border: 2px solid black;
+    border-radius: 50%;
+    width: 72px;
+    height: 72px;
+    margin: 7px auto;
 }
