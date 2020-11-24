@@ -4,6 +4,7 @@ import user from './user.reducer';
 import pages from './navigation.reducer';
 import profile from './profile.reducer';
 import leaderboard from './leaderboard.reducer';
+import game from './game.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   pages, // contains the paths and labels for the navigation bar as well as flags which page is active
   profile, // contains the profile data for the currently viewed user
   leaderboard, // contains the leaderboard rank and win/loss info
+  game, // contains the current game board
 });
 
 export default rootReducer;

@@ -1,0 +1,57 @@
+.gameWrapper {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    margin: 5%;
+}
+
+.gameSidePanel {
+    width: 25%;
+    height: 100%;
+    border: 1px solid black;
+}
+
+.gameBoard {
+    height: 100%;
+    width: 50%;
+    border: 1px solid black;
+}
+
+.marbleBucket {
+    display: inline-flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.marbleSelector {
+    border: 2px solid black;
+    border-radius: 50%;
+    width: 72px;
+    height: 72px;
+    margin: 2.5%;
+}
+
+.redMarble {
+    background-color: red;
+}
+
+.blueMarble {
+    background-color: blue;
+}
+
+.yellowMarble {
+    background-color: yellow;
+}
+
+.greenMarble {
+    background-color: green; 
+}
+
+.pinkMarble {
+    background-color: pink;
+}
+
+.whiteMarble {
+    background-color: white;
+}

@@ -11,7 +11,7 @@ class GameResults extends Component {
 
   render() {
     return (
-      <div>
+      <div className='gameSidePanel'>
         <h2>results</h2>
       </div>
     );

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import './GameDisplay.css';
 
 // Custom Components
 import GamePieces from '../GamePieces/GamePieces';
@@ -11,8 +12,7 @@ class GameDisplay extends Component {
 
 	render () {
 		return (
-			<section>
-				<h1>Mastermind</h1>
+			<section className='gameWrapper'>
 				<GameResults />
 				<GameBoard />
 				<GamePieces />
