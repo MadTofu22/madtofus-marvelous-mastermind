@@ -27,12 +27,12 @@ const game = (state = {}, action) => {
     switch (action.type) {
         default: 
             return state;
-        case 'NEW_GAME':
+        case 'CLEAR_GAME_STATE':
             return {
                 guessMatrix: newGuessMatrix,
                 resultsMatrix: newResultsMatrix
             };
-        case 'UPDATE_GAME':
+        case 'SET_GAME_STATE':
             return action.payload;
     }
 }
