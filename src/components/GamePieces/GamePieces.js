@@ -5,16 +5,27 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 class GamePieces extends Component {
 
   state = {
-    selectedMarble: null
+    selectedMarble: 'selectedMarble emptyMarble',
   }
+
+  // This function updates the game state in the redux stor with the currently selected marble
   handleSelectMarble = (event) => {
-    console.log('the', event.target.id, 'has been selected');
+    console.log('the', event.target.id, 'marble has been selected');
+    this.setState({
+      selectedMarble: `marbleSelector ${event.target.id}Marble`
+    })
+    this.props.dispatch({type: 'UPDATE_HELD', payload: event.target.id});
   }
 
   render() {
     return (
       <div className='gameSidePanel'>
         <h2>Marble Bucket</h2>
+        <div className='selectedDisplay'>
+          <h3>Selected Marble:</h3>
+          <div className={this.state.selectedMarble} id='selectedMarble'></div>
+        </div>
+
         <div className='marbleBucket'>
           <div className='marbleSelector redMarble' id='red' onClick={event => this.handleSelectMarble(event)}></div>
           <div className='marbleSelector blueMarble' id='blue' onClick={event => this.handleSelectMarble(event)}></div>

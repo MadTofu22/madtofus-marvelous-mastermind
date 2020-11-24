@@ -17,9 +17,18 @@ function* updateGameState (action) {
     }
 }
 
-function* navigationSaga () {
-    yield takeEvery('RESET_GAME', startNewGame);
-    yield takeEvery('UPDATE_GAME', updateGameState);
+function* updateHeldMarble (action) {
+    try {
+        yield put({type: 'SET_SELECTOR', payload: action.payload});
+    } catch (error) {
+        console.log(error);
+    }
 }
 
-export default navigationSaga;
+function* gameSaga () {
+    yield takeEvery('RESET_GAME', startNewGame);
+    yield takeEvery('UPDATE_GAME', updateGameState);
+    yield takeEvery('UPDATE_HELD', updateHeldMarble);
+}
+
+export default gameSaga;
