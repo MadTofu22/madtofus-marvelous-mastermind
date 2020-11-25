@@ -53,16 +53,39 @@ class GamePieces extends Component {
   // This function gets the indices of marbles in the code that have the correct color guessed
   getCorrectColors = (code, guess, correct) => {
     let results = [];
-    
+    // console.log('==============================')
+    // console.log('START CHECK FOR CORRECT COLORS')
+    // console.log('==============================')
+    // console.log('correct:', correct)
+    // console.log('code:', code)
+    // console.log('guess', guess)
     for (let index in guess) {
-      if (correct.indexOf(index.toString()) < 0) { // check to make sure the marble is not already marked as correct
+      // console.log('-----new iteration-----')
+      // console.log('index =', index)
+      // console.log('results =', results)
+      if (correct.indexOf(Number(index)) < 0) { // check to make sure the marble is not already marked as correct
         let indexInCode = code.indexOf(guess[index]); // get the index in the code array of the current guess marble being checked, -1 if not in the code
-        if (indexInCode >= 0 && results.indexOf(indexInCode.toString) < 0) { // checks if the color is in the code and makes sure its not already marked
-          results.push(indexInCode);
+        // console.log('passed first check, indexInCode =', indexInCode)
+        if (indexInCode >= 0) { // checks if the color is a match to a marble in the code
+          if (results.indexOf(indexInCode) < 0) { // check to see if the index from the code has already been added to the results
+            results.push(indexInCode);
+            // console.log('found correct color, results =', results)
+          } else { // if already in the results, check if there is a duplicate color in the code
+            let resultsIndex = results.indexOf(indexInCode);
+            if (code.indexOf(guess[index], resultsIndex) >= 0) {
+              results.push(code.indexOf(guess[index], resultsIndex+1));
+              // console.log('found correct color, results =', results)
+            }
+          }
         }
       }
     }
-    console.log('correctColors =', results);
+    // console.log('==============================')
+    // console.log('END CHECK FOR CORRECT COLORS')
+    // console.log('correctColors =', results)
+    // console.log('code:', code)
+    // console.log('guess', guess)
+    // console.log('==============================')
     return results;
   }
 
