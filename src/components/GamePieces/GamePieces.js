@@ -57,40 +57,44 @@ class GamePieces extends Component {
   // This function gets the indices of marbles in the code that have the correct color guessed
   getCorrectColors = (code=[], guess=[], correct=[]) => {
     let results = [];
-    // console.log('==============================')
-    // console.log('START CHECK FOR CORRECT COLORS')
-    // console.log('==============================')
-    // console.log('correct:', correct)
-    // console.log('code:', code)
-    // console.log('guess', guess)
+    console.log('==============================')
+    console.log('START CHECK FOR CORRECT COLORS')
+    console.log('==============================')
+    console.log('correct:', correct)
+    console.log('code:', code)
+    console.log('guess', guess)
     for (let index in guess) {
-      // console.log('-----new iteration-----')
-      // console.log('index =', index)
-      // console.log('results =', results)
+      console.log('-----new iteration-----')
+      console.log('index =', index)
+      console.log('results =', results)
       if (correct.indexOf(Number(index)) < 0) { // check to make sure the marble is not already marked as correct
         let indexInCode = code.indexOf(guess[index]); // get the index in the code array of the current guess marble being checked, -1 if not in the code
-        // console.log('passed first check, indexInCode =', indexInCode)
+        console.log('passed first check, indexInCode =', indexInCode)
         if (indexInCode >= 0) { // checks if the color is a match to a marble in the code
           if (results.indexOf(indexInCode) < 0) { // check to see if the index from the code has already been added to the results
             results.push(indexInCode);
-            // console.log('found correct color, results =', results)
+            console.log('found correct color, first match for the color, results =', results)
           } else { // if already in the results, check if there is a duplicate color in the code
             let resultsIndex = results.indexOf(indexInCode);
-            if (code.indexOf(guess[index], resultsIndex) >= 0) {
+            if (code.indexOf(guess[index], resultsIndex) < 0) {
               results.push(code.indexOf(guess[index], resultsIndex+1));
-              // console.log('found correct color, results =', results)
+              console.log('found correct color, after checking for duplicates, results =', results)
             }
           }
         }
       }
     }
-    // console.log('==============================')
-    // console.log('END CHECK FOR CORRECT COLORS')
-    // console.log('correctColors =', results)
-    // console.log('code:', code)
-    // console.log('guess', guess)
-    // console.log('==============================')
+    console.log('==============================')
+    console.log('END CHECK FOR CORRECT COLORS')
+    console.log('correctColors =', results)
+    console.log('code:', code)
+    console.log('guess', guess)
+    console.log('==============================')
     return results;
+  }
+
+  validateMarbleHasNotBeenUsed = (codeIndex, codeArray, resultsArray) => {
+
   }
 
   // This function updates the game state in the redux stor with the currently selected marble
@@ -105,7 +109,7 @@ class GamePieces extends Component {
   // This function handles resetting the game board
   handleNewGame = () => {
     this.props.forceRender();
-    this.props.dispatch({type: 'RESET_GAME', payload: this.props.generateCode});
+    this.props.dispatch({type: 'RESET_GAME', payload: this.props.generateCode()});
   }
 
   render() {

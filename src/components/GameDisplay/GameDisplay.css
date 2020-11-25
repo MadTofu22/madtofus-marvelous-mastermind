@@ -19,7 +19,7 @@
     border: 1px solid black;
 }
 
-.selectedDisplay, .marbleBucket {
+.selectedDisplay, .marbleBucket, ResultsRow {
     display: inline-flex;
     justify-content: center;
     flex-wrap: wrap;
