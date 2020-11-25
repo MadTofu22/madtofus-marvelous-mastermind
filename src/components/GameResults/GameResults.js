@@ -10,7 +10,7 @@ class GameResults extends Component {
       <div className='gameSidePanel'>
         <h2>results</h2>
         {this.props.store.game.results.map((row, index) => {
-          return <ResultsRow row={row} key={index} />
+          return <ResultsRow className='resultsRowContainer' row={row} key={index} />
         })}
       </div>
     );

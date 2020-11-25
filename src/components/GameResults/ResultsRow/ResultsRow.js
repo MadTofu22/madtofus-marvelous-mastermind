@@ -37,11 +37,11 @@ class ResultsRow extends Component {
   render() {
     const rowIndicators = this.getRowIndicators();
     return (
-      <>
+      <div className='resultsRowContainer'>
         {rowIndicators.map((color, index) => {
           return (<div className={`resultsIndicator ${color}Peg`} key={index}></div>);
         })}
-      </>
+      </div>
     );
   }
 }
