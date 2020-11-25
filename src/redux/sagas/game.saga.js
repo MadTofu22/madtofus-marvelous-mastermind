@@ -3,9 +3,10 @@ import { put, takeEvery } from 'redux-saga/effects';
 
 function* startNewGame (action) {
     try {
+        yield put({type: 'CLEAR_GAME_BOARD'});
         yield put({type: 'CLEAR_GAME_STATE'});
         yield put({type: 'CLEAR_GAME_HELD'});
-        yield put({type: 'CLEAR_GAME_BOARD'});
+        
         yield put({type: 'CLEAR_GAME_RESULTS'});
         yield put({type: 'SET_WINNING_CODE', payload: action.payload})
     } catch (error) {

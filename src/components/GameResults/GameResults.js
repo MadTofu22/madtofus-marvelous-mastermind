@@ -10,7 +10,6 @@ class GameResults extends Component {
       <div className='gameSidePanel'>
         <h2>results</h2>
         {this.props.store.game.results.map((row, index) => {
-          console.log('in game results, row:', index)
           return <ResultsRow row={row} key={index} />
         })}
       </div>

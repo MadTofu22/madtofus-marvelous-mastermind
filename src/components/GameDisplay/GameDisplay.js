@@ -20,9 +20,7 @@ class GameDisplay extends Component {
 
 	forceRender = () => {
 		console.log('in game display force render')
-		this.setState({
-			gameCount: this.state.gameCount+1
-		})
+		this.forceUpdate();
 	}
 	
 	generateCode = () => {

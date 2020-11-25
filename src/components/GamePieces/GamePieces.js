@@ -30,8 +30,8 @@ class GamePieces extends Component {
 
   // This function handles getting the count of correctly placed marbles and any colors that are correct but in the wrong place
   getResults = (guessRow) => {
-    let winningCode = this.props.store.game.winningCode || [];
-    let guess = this.props.store.game.guesses[guessRow] || [];
+    let winningCode = this.props.store.game.winningCode;
+    let guess = this.props.store.game.guesses[guessRow];
     console.log('in getReuslts, winningCode=', winningCode, 'vs guess=', guess);
     let correctMarbles = this.getCorrectMarbles(winningCode, guess);
     let correctColors = this.getCorrectColors(winningCode, guess, correctMarbles);
@@ -44,7 +44,7 @@ class GamePieces extends Component {
   }
 
   // This function gets the indices of the correctly guessed marbles
-  getCorrectMarbles = (code, guess) => {
+  getCorrectMarbles = (code=[], guess=[]) => {
     let results = [];
     for (let index in code) {
       if (code[index] === guess[index]) {
@@ -55,7 +55,7 @@ class GamePieces extends Component {
   }
 
   // This function gets the indices of marbles in the code that have the correct color guessed
-  getCorrectColors = (code, guess, correct) => {
+  getCorrectColors = (code=[], guess=[], correct=[]) => {
     let results = [];
     // console.log('==============================')
     // console.log('START CHECK FOR CORRECT COLORS')
@@ -114,7 +114,7 @@ class GamePieces extends Component {
         <h2>Marble Bucket</h2>
         <div className='selectedDisplay'>
           <h3>Selected Marble:</h3>
-          <div className={this.state.selectedMarble} id='selectedMarble'></div>
+          <div className={`selectedMarble ${this.props.store.game.heldMarble}Marble`} id='selectedMarble'></div>
         </div>
 
         <div className='marbleBucket'>

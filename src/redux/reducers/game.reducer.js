@@ -28,7 +28,16 @@ const guesses = (state=newGuessesMatrix, action) => {
         default:
             return state;
         case 'CLEAR_GAME_BOARD':
-            return newGuessesMatrix;
+            return [
+                ['empty', 'empty', 'empty', 'empty'],
+                ['empty', 'empty', 'empty', 'empty'],
+                ['empty', 'empty', 'empty', 'empty'],
+                ['empty', 'empty', 'empty', 'empty'],
+                ['empty', 'empty', 'empty', 'empty'],
+                ['empty', 'empty', 'empty', 'empty'],
+                ['empty', 'empty', 'empty', 'empty'],
+                ['empty', 'empty', 'empty', 'empty']
+            ];
         case 'SET_GAME_BOARD':
             return action.payload;
     }
