@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import {withRouter} from 'react-router';
 
 class GamePieces extends Component {
 
   state = {
     selectedMarble: 'selectedMarble emptyMarble',
+    checkGuessButtonDisabled: false,
   }
 
   // This function handles checking the current row against the generated code
@@ -16,18 +18,20 @@ class GamePieces extends Component {
 
     if(results.correctMarbles === 4){
       alert('YOU WIN!!!');
+      // this.disableCheckGuess();
       // pop up win modal here
     } else {
       let newResults = this.props.store.game.results.slice(0);
       newResults[row-1] = results;
       this.props.dispatch({type: 'UPDATE_GAME', payload: {guessNum: row+1, results: newResults}});
     }
+    this.props.forceRender();
   }
 
   // This function handles getting the count of correctly placed marbles and any colors that are correct but in the wrong place
   getResults = (guessRow) => {
-    let winningCode = this.props.store.game.winningCode;
-    let guess = this.props.store.game.guesses[guessRow];
+    let winningCode = this.props.store.game.winningCode || [];
+    let guess = this.props.store.game.guesses[guessRow] || [];
     console.log('in getReuslts, winningCode=', winningCode, 'vs guess=', guess);
     let correctMarbles = this.getCorrectMarbles(winningCode, guess);
     let correctColors = this.getCorrectColors(winningCode, guess, correctMarbles);
@@ -98,6 +102,12 @@ class GamePieces extends Component {
     this.props.dispatch({type: 'UPDATE_HELD', payload: event.target.id});
   }
 
+  // This function handles resetting the game board
+  handleNewGame = () => {
+    this.props.forceRender();
+    this.props.dispatch({type: 'RESET_GAME', payload: this.props.generateCode});
+  }
+
   render() {
     return (
       <div className='gameSidePanel'>
@@ -117,11 +127,25 @@ class GamePieces extends Component {
         </div>
 
         <div className='buttonWrapper'>
-          <button className='submitButton' id='checkGuessButton' onClick={this.handleCheckGuess}>Check Guess</button>
+          <button 
+            className='submitButton' 
+            id='checkGuessButton' 
+            disabled={this.state.checkGuessButtonDisabled} 
+            onClick={this.handleCheckGuess}
+          >
+            Check Guess
+          </button>
+          <button 
+            className='submitButton' 
+            id='newGameButton'
+            onClick={this.handleNewGame}
+          >
+            New Game
+          </button>
         </div>
       </div>
     );
   }
 }
 
-export default connect(mapStoreToProps)(GamePieces);
+export default withRouter(connect(mapStoreToProps)(GamePieces));

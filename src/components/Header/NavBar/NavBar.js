@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import mapStoreToProps from '../../redux/mapStoreToProps';
+import mapStoreToProps from '../../../redux/mapStoreToProps';
 
-import NavButton from '../NavButton/NavButton';
+import NavButton from './NavButton/NavButton';
 
 class NavBar extends Component {
 

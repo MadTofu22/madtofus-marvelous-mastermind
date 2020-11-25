@@ -5,9 +5,9 @@ import {withRouter} from 'react-router';
 import './Header.css';
 
 // Custom components
-import NavBar from '../NavBar/NavBar';
-import UnregisteredUserWidget from '../UnregisteredUserWidget/UnregisteredUserWidget';
-import RegisteredUserWidget from "../RegisteredUserWidget/RegisteredUserWidget";
+import NavBar from './NavBar/NavBar';
+import UnregisteredUserWidget from './UnregisteredUserWidget/UnregisteredUserWidget';
+import RegisteredUserWidget from './RegisteredUserWidget/RegisteredUserWidget';
 
 class Header extends Component {
 	

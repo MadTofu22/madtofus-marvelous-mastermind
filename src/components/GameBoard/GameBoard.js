@@ -5,20 +5,8 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import GuessRow from './GuessRow/GuessRow';
 
 class GameBoard extends Component {
-  
-  componentDidMount () {
-    this.props.dispatch({type: 'RESET_GAME', payload: this.generateCode()});
-  }
-
-  generateCode = () => {
-    const colors = ['red', 'blue', 'green', 'yellow', 'pink', 'white'];
-    let winningCode = [];
-
-    for (let i=0; i<4; i++) {
-      winningCode.push(colors[Math.floor(Math.random() * colors.length)]); // Picks a random color then adds it to the winning code
-    }
-    console.log('winning code:', winningCode);
-    return winningCode;
+  state = {
+    currentGuess: this.props.store.game.currentGuess
   }
 
   render() {

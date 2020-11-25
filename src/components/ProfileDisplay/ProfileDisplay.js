@@ -5,8 +5,8 @@ import { withRouter } from "react-router";
 import './Profile.css';
 
 // Custom components
-import SelfProfile from '../SelfProfile/SelfProfile';
-import OtherProfile from '../OtherProfile/OtherProfile';
+import SelfProfile from './SelfProfile/SelfProfile';
+import OtherProfile from './OtherProfile/OtherProfile';
 
 class ProfileDisplay extends Component {
 
