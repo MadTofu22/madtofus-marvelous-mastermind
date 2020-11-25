@@ -4,10 +4,6 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 
 
 class GameResults extends Component {
-  
-  state = {
-
-  }
 
   render() {
     return (

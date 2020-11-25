@@ -1,14 +1,14 @@
 import { combineReducers } from 'redux';
 
 const newResultsMatrix = [
-    [null, null, null, null],
-    [null, null, null, null],
-    [null, null, null, null],
-    [null, null, null, null],
-    [null, null, null, null],
-    [null, null, null, null],
-    [null, null, null, null],
-    [null, null, null, null]
+    {correctMarbles: 0, correctColors: 0},
+    {correctMarbles: 0, correctColors: 0},
+    {correctMarbles: 0, correctColors: 0},
+    {correctMarbles: 0, correctColors: 0},
+    {correctMarbles: 0, correctColors: 0},
+    {correctMarbles: 0, correctColors: 0},
+    {correctMarbles: 0, correctColors: 0},
+    {correctMarbles: 0, correctColors: 0},
 ];
 
 const newGuessesMatrix = [
@@ -27,7 +27,7 @@ const guesses = (state=newGuessesMatrix, action) => {
     switch (action.type) {
         default:
             return state;
-        case 'CLEAR_GAME_STATE':
+        case 'CLEAR_GAME_BOARD':
             return newGuessesMatrix;
         case 'SET_GAME_BOARD':
             return action.payload;
@@ -39,7 +39,7 @@ const results = (state=newResultsMatrix, action) => {
     switch (action.type) {
         default:
             return state;
-        case 'CLEAR_GAME_STATE':
+        case 'CLEAR_GAME_RESULTS':
             return newResultsMatrix;
         case 'SET_GAME_RESULTS':
             return action.payload;
@@ -53,7 +53,7 @@ const currentGuess = (state=1, action) => {
             return state;
         case 'CLEAR_GAME_STATE':
             return 1;
-        case 'SET_GAME_RESULTS':
+        case 'SET_GUESS':
             return action.payload;
     }
 }
@@ -63,45 +63,26 @@ const heldMarble = (state='', action) => {
     switch (action.type) {
         default:
             return state;
-        case 'CLEAR_GAME_STATE':
+        case 'CLEAR_GAME_HELD':
             return 'empty';
         case 'SET_SELECTOR':
             return action.payload;
     }
 }
 
-// const game = (state = {}, action) => {
-//     switch (action.type) {
-//         default: 
-//             return {
-//                 guessMatrix: newGuessMatrix,
-//                 resultsMatrix: newResultsMatrix,
-//                 heldMarble: null,
-//                 currentGuess: 1,
-//             };
-//         case 'CLEAR_GAME_STATE':
-//             return {
-//                 guessMatrix: newGuessMatrix,
-//                 resultsMatrix: newResultsMatrix,
-//                 heldMarble: null,
-//                 currentGuess: 1,
-//             };
-//         case 'SET_GAME_RESULTS':
-//             return {
-//                 ...state,
-//                 resultsMatrix: action.payload
-//             };
-//         case 'SET_SELECTOR':
-//             return {
-//                 ...state,
-//                 heldMarble: action.payload
-//             };
-//     }
-// }
+const winningCode = (state=[], action) => {
+    switch (action.type) {
+        default:
+            return state;
+        case 'SET_WINNING_CODE':
+            return action.payload;
+    }
+}
 
 export default combineReducers({
     guesses,
     results,
     heldMarble,
     currentGuess,
-})
+    winningCode,
+});

@@ -2,18 +2,19 @@
     display: flex;
     justify-content: center;
     text-align: center;
-    height: 100%;
-    margin: 5%;
+    max-width: 864px;
+    height: auto;
+    margin: 5% auto;
 }
 
 .gameSidePanel {
     width: 25%;
-    height: 100%;
+    height: auto;
     border: 1px solid black;
 }
 
 .gameBoard {
-    height: 100%;
+    height: auto;
     width: 50%;
     border: 1px solid black;
 }
@@ -32,8 +33,11 @@
     margin: 2.5%;
 }
 
-.emptyMarble {
-    /* background-color: black; */
+.selectedDisplay {
+    border-top: 5px dotted black;
+    border-bottom: 5px dotted black;
+    padding-bottom: 5%;
+    margin-bottom: 5%;
 }
 
 .redMarble {
@@ -64,7 +68,7 @@
     background-color: rgba(255, 255, 255, 0.2);
     border: 2px solid black;
     border-radius: 20px;
-    width: 360px;
+    width: 90%;
     height: 90px;
     margin: 1% auto;
     display: inline-flex;
