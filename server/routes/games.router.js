@@ -8,14 +8,48 @@ const userStrategy = require('../strategies/user.strategy');
 
 const router = express.Router();
 
-// Handle adding a new game to the table
-router.post('/', (req, res) => {
-    res.sendStatus(200);
-});
+// Handle adding a game to the games table
+router.post('/:id', rejectUnauthenticated, (req, res) => {
+  if (req.user.id === Number(req.params.id)) {
+    const queryText = `INSERT INTO "user" (user_id, game_won) VALUES ($1, $2);`;
+    const queryParams = [req.user.id, req.body.result];
+   
+    pool.query(queryText, queryParams)
+      .then(result => {
+        res.sendStatus(202);
+      })
+      .catch(error => {
+        console.log(error);
+        res.sendStatus(403);
+      });
+  } else {
+    console.log('Incorrect user attempting to access this profile.');
+    res.sendStatus(400);
+  }
+})
 
-// Handle getting a specific users game history
-router.get('/:id', (req, res) => {
-    res.sendStatus(200);
+// Handle updating the users win/loss record
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+  if (req.user.id === Number(req.params.id)) {
+
+    const queryText = req.body.result ? 
+      `UPDATE "user" SET total_wins = total_wins+1 WHERE id = $1;`
+      :
+      `UPDATE "user" SET total_losses = total_losses+1 WHERE id = $1;`
+      ;
+
+    pool.query(queryText, [req.user.id])
+      .then(result => {
+        res.sendStatus(202);
+      })
+      .catch(error => {
+        console.log(error);
+        res.sendStatus(403);
+      });
+  } else {
+    console.log('Incorrect user attempting to access this profile.');
+    res.sendStatus(400);
+  }
 });
 
 module.exports = router;

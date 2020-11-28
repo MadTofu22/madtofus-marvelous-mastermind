@@ -18,17 +18,26 @@ class GamePieces extends Component {
       if(results.correctMarbles === 4) { // check for if the user wins
         this.toggleCheckGuessButton();
         alert('YOU WIN!!!');
-      } else if (results.correctMarbles < 4 && row < 8) {
+      } else if (results.correctMarbles < 4 && row < 8) { // check if loser wins but game is not over
         this.updateResults(row, results);
-      } else if (results.correctMarbles < 4 && row === 8) {
+      } else if (results.correctMarbles < 4 && row === 8) { // game over update
         this.updateResults(row, results);
         this.toggleCheckGuessButton();
-        alert('Womp womp you lose.')
+        // update the users losses if logged in
+        
+        alert('Womp womp you lose.');
       }
     } else {
       alert('Please enter a full guess');
     }
     this.props.forceRender();
+  }
+
+  // This function handles updating a registered users win/loss record
+  updateRecord = (result) => {
+    if (this.props.store.user.id) {
+      
+    }
   }
 
   // This function updates the results in the redux state
