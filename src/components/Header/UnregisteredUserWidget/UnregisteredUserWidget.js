@@ -21,7 +21,7 @@ class UnregisteredUserWidget extends Component {
                 username: this.state.username,
                 password: this.state.password
 			},
-		});
+        });
 
 		event.target.reset();
 		this.props.history.push('/home');
@@ -51,9 +51,10 @@ class UnregisteredUserWidget extends Component {
                     <label htmlFor='passwordInput' value='Password'>
                         <input 
                             required
-                            type='text'
+                            type='password'
                             name='passwordInput'
                             placeholder='Password'
+                            
                             onChange={event => this.handleChangeFor(event, 'password')}
                         />
                     </label>

@@ -6,26 +6,54 @@ import {withRouter} from 'react-router';
 class GamePieces extends Component {
 
   state = {
-    selectedMarble: 'selectedMarble emptyMarble',
     checkGuessButtonDisabled: false,
   }
 
   // This function handles checking the current row against the generated code
   handleCheckGuess = () => {
-    // add guess validation
     const row = this.props.store.game.currentGuess;
     const results = this.getResults(row-1);
 
-    if(results.correctMarbles === 4){
-      alert('YOU WIN!!!');
-      // this.disableCheckGuess();
-      // pop up win modal here
+    if (this.validateGuessRow(this.props.store.game.guesses[row-1])) {
+      if(results.correctMarbles === 4) { // check for if the user wins
+        this.toggleCheckGuessButton();
+        alert('YOU WIN!!!');
+      } else if (results.correctMarbles < 4 && row < 8) {
+        this.updateResults(row, results);
+      } else if (results.correctMarbles < 4 && row === 8) {
+        this.updateResults(row, results);
+        this.toggleCheckGuessButton();
+        alert('Womp womp you lose.')
+      }
     } else {
+      alert('Please enter a full guess');
+    }
+    this.props.forceRender();
+  }
+
+  // This function updates the results in the redux state
+  updateResults = (row, results) => {
       let newResults = this.props.store.game.results.slice(0);
       newResults[row-1] = results;
       this.props.dispatch({type: 'UPDATE_GAME', payload: {guessNum: row+1, results: newResults}});
+  }
+
+  // This function toggles the disabled attribute for the check guess button
+  toggleCheckGuessButton = () => {
+    this.setState({
+      checkGuessButtonDisabled: !this.state.checkGuessButtonDisabled
+    });
+  }
+
+  // This function handles making sure all for slots in the current guess row are filled when check guess is clicked
+  validateGuessRow = (guessRow) => {
+    console.log('guessRow', guessRow)
+    for (let marble of guessRow) {
+      if (marble === 'empty') {
+        return false;
+      }
     }
-    this.props.forceRender();
+    return true;
   }
 
   // This function handles getting the count of correctly placed marbles and any colors that are correct but in the wrong place
@@ -36,7 +64,7 @@ class GamePieces extends Component {
     let correctMarbles = this.getCorrectMarbles(winningCode, guess);
     let correctColors = this.getCorrectColors(winningCode, guess, correctMarbles);
     let results = {
-      correctMarbles: correctMarbles.length, 
+      correctMarbles: correctMarbles.length,
       correctColors: correctColors.length,
     };
     console.log('RESULTS CHECK:', results)
@@ -99,16 +127,16 @@ class GamePieces extends Component {
 
   // This function updates the game state in the redux stor with the currently selected marble
   handleSelectMarble = (event) => {
-    console.log('the', event.target.id, 'marble has been selected');
-    this.setState({
-      selectedMarble: `marbleSelector ${event.target.id}Marble`
-    })
+    // this.props.forceRender();
     this.props.dispatch({type: 'UPDATE_HELD', payload: event.target.id});
   }
 
   // This function handles resetting the game board
   handleNewGame = () => {
     this.props.forceRender();
+    this.setState({
+      checkGuessButtonDisabled: false,
+    })
     this.props.dispatch({type: 'RESET_GAME', payload: this.props.generateCode()});
   }
 
