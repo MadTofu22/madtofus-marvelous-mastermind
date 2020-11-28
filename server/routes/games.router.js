@@ -11,7 +11,7 @@ const router = express.Router();
 // Handle adding a game to the games table
 router.post('/:id', rejectUnauthenticated, (req, res) => {
   if (req.user.id === Number(req.params.id)) {
-    const queryText = `INSERT INTO "user" (user_id, game_won) VALUES ($1, $2);`;
+    const queryText = `INSERT INTO "games" (user_id, game_won) VALUES ($1, $2);`;
     const queryParams = [req.user.id, req.body.result];
    
     pool.query(queryText, queryParams)
@@ -51,5 +51,7 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
     res.sendStatus(400);
   }
 });
+
+// Handle deleting all a users games when they delete their profile
 
 module.exports = router;
