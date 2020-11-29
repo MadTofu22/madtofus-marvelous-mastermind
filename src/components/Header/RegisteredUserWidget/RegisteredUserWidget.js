@@ -8,7 +8,7 @@ class RegisteredUserWidget extends Component {
     render () {
         return (
           <div className="logoutContainer">
-            <p className="headerUsername">{this.props.store.user.username}</p>
+            <h1 className="headerUsername">{this.props.store.user.username}</h1>
             <button
               className="headerWidgetButton"
               onClick={() => this.props.dispatch({type: 'LOGOUT'})}

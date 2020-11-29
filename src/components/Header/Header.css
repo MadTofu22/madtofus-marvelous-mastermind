@@ -1,31 +1,50 @@
 .headerWrapper {
+    position: fixed;
+    top: 0;
     background-color: rgba(153, 50, 204, 1);
+    box-shadow: 0px 10px 5px black;
     display: flex;
-    max-height: 90px;
+    height: 90px;
+    width: 100%;
+    margin: 0% ;
 }
 
 .navBarWrapper {
-    align-items: center;
-    display: inline-flex;
+    display: flex;
+    justify-content: center;
     height: 90px;
-    max-width: 1152px;
-    min-width: 50%;
+    width: 100%;
+    align-items: center;
+    margin-right: 5%;
+    margin-left: -5%;
 }
 
 .headerAvatar {
     height: 80px;
     width: 80px;
     margin: 5px;
-    box-shadow: 3px 3px 20px black;
+}
+
+.logoutContainer {
+    width: auto;
+}
+
+.headerUsername {
+    margin: 10px 0px 23.5px 0px;
+    text-align: left;
+    height: 30px;
+    width: 144px;
 }
 
 .navButtonContainer {
+    background-color: rgba(255, 255, 255, .1);
     border: 5px solid rgba(153, 50, 224);
     border-radius: 50px;
-    margin: 2px 7px;
+    margin: 0px 6px;
+    padding: 6px 12px;
     text-align: center;
-    width: auto;
-    height: auto;
+    min-width: 72px;
+    height: 50%;
 }
 
 .navButtonContainer:hover {
@@ -36,13 +55,34 @@
     background-color: rgba(153, 50, 224);
     border: 5px solid rgba(153, 50, 224);
     border-radius: 50px;
-    margin: 2px 7px;
+    margin: 0px 6px;
+    padding: 6px 12px;
     text-align: center;
     text-decoration: underline;
-    width: auto;
-    height: auto;
+    min-width: 72px;
+    height: 50%;
 }
 
 .navButtonLabel {
-    margin: 10px 7px;
+    margin: 7.5px 0px;
+    font-size: 20px;
+}
+
+label {
+    margin: 0px;
+    padding: 0px;
+}
+
+#usernameInput {
+    margin: 4.75px 0px 7.5px 0px;
+    width: 142px;
+}
+
+#passwordInput {
+    margin: 0px 0px 7.5px 0px;
+    width: 142px;
+}
+
+.headerWidgetButton {
+    width: 75px;
 }

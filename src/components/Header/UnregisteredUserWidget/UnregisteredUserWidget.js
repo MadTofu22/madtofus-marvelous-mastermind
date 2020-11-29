@@ -38,29 +38,31 @@ class UnregisteredUserWidget extends Component {
         return (
             <div className='loginContainer'>
                 <form onSubmit={this.handleSubmit}>
-                    <label htmlFor='usernameInput' value='Username'>
-                        <input 
-                            required
-                            type='text'
-                            name='usernameInput'
-                            placeholder='Username'
-                            onChange={event => this.handleChangeFor(event, 'username')}
-                        />
-                    </label>
-
+                    <label htmlFor='usernameInput' value='Username'></label>
+                    <input 
+                        required
+                        type='text'
+                        name='usernameInput'
+                        placeholder='Username'
+                        id='usernameInput'
+                        onChange={event => this.handleChangeFor(event, 'username')}
+                    />
+                    <br/>
                     <label htmlFor='passwordInput' value='Password'>
                         <input 
                             required
                             type='password'
                             name='passwordInput'
                             placeholder='Password'
-                            
+                            id='passwordInput'
                             onChange={event => this.handleChangeFor(event, 'password')}
                         />
                     </label>
-                    <button className='headerWidgetButton'>Login</button>
+                    <br/>
+                    <button type='submit' className='headerWidgetButton'>Login</button>
+                    <button type='button' className='headerWidgetButton' onClick={() => this.props.history.push('/register')}>Register</button>
                 </form>
-                <button className='headerWidgetButton' onClick={() => this.props.history.push('/register')}>Register</button>
+
             </div>
         );
     }

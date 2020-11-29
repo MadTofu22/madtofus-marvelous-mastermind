@@ -13,7 +13,7 @@ class Header extends Component {
 	
 	render() {
 		return (
-			<section className='headerWrapper'>
+			<div className='headerWrapper'>
 				{this.props.store.user.id ?
 				<>
 					<img 
@@ -35,7 +35,7 @@ class Header extends Component {
 				</>
 				}
 				<NavBar />
-			</section>
+			</div>
 		);
 	}
 }
