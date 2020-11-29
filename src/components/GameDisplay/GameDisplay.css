@@ -121,7 +121,8 @@
 /* GAME END MODAL STYLING */
 .modalContainer {
     position: fixed; /* Stay in place */
-    border: 1px solid black;
+    border: 10px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10%;
     z-index: 2; /* Sit on top */
     justify-content: center;
     left: 25%;

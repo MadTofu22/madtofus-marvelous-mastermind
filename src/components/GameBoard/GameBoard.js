@@ -12,7 +12,7 @@ class GameBoard extends Component {
   render() {
     return (
       <div className='gameBoard'>
-        <h2>board</h2>
+        <h2>Guesses</h2>
         {this.props.store.game.guesses.map((rowMatrix, index) => {
           return <GuessRow key={index} rowMatrix={rowMatrix} rowNumber={index} />
         })}
