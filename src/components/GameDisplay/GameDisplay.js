@@ -7,22 +7,36 @@ import './GameDisplay.css';
 import GamePieces from '../GamePieces/GamePieces';
 import GameBoard from '../GameBoard/GameBoard';
 import GameResults from '../GameResults/GameResults';
+import GameEndModal from './GameEndModal';
 
 class GameDisplay extends Component {
 
 	state = {
-		gameCount: 0
+		gameCount: 0,
+		displayModal: false,
+		modalType: '',
 	}
 	
 	componentDidMount () {
 		this.props.dispatch({type: 'RESET_GAME', payload: this.generateCode()});
 	}
 
+	// This function forces the game to re-render
 	forceRender = () => {
-		console.log('in game display force render')
+		console.log('in game display force render');
 		this.forceUpdate();
 	}
+
+	// This function handles creating a new game.
+	handleNewGame = () => {
+		this.setState({
+		  checkGuessButtonDisabled: false,
+		})
+		this.props.dispatch({type: 'RESET_GAME', payload: this.props.generateCode()});
+		this.forceUpdate();
+	  }
 	
+	// This function generates a random winning code for the new game.
 	generateCode = () => {
 		const colors = ['red', 'blue', 'green', 'yellow', 'pink', 'white'];
 		let winningCode = [];
@@ -34,12 +48,42 @@ class GameDisplay extends Component {
 		return winningCode;
 	}
 
+	// This function handles setting the local state modal type and toggling it to display
+	displayModal = (result) => {
+		let modalType = '';
+
+		if (this.props.store.user.id) {
+			if (result === 'win') {
+				modalType = 'user_win';		
+			} else {
+				modalType = 'user_loss'
+			}
+		} else {
+			if (result === 'win') {
+				modalType = 'guest_win';		
+			} else {
+				modalType = 'guest_loss'
+			}
+		}
+
+		this.setState({
+			...this.state,
+			displayModal: true,
+			modalType,
+		})
+	}
+
 	render () {
 		return (
 			<section className='gameWrapper'>
+				{this.state.displayModal ? 
+					<GameEndModal className='modalContainer' modalType={this.state.modalType}/>
+					:
+					<></>
+				}
 				<GameResults />
 				<GameBoard />
-				<GamePieces generateCode={this.generateCode} forceRender={this.forceRender} />
+				<GamePieces generateCode={this.generateCode} forceRender={this.forceRender} displayModal={this.displayModal} />
 			</section>
 		);
 	}

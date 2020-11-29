@@ -7,19 +7,20 @@ class GamePieces extends Component {
 
   state = {
     checkGuessButtonDisabled: false,
+    displayModal: false,
   }
 
   // This function handles checking the current row against the generated code
   handleCheckGuess = () => {
     const row = this.props.store.game.currentGuess;
     const results = this.getResults(row-1);
-    this.props.forceRender();
 
     if (this.validateGuessRow(this.props.store.game.guesses[row-1])) {
       if(results.correctMarbles === 4) { // check for if the user wins
         this.toggleCheckGuessButton();
         this.updateRecord(true);
-        alert('YOU WIN!!!');
+        this.props.displayModal('win');
+        alert('YOU WIN!!! Select New Game to play again!');
       } else if (results.correctMarbles < 4 && row < 8) { // check if loser wins but game is not over
         this.updateResults(row, results);
       } else if (results.correctMarbles < 4 && row === 8) { // game over update
@@ -27,8 +28,10 @@ class GamePieces extends Component {
         this.toggleCheckGuessButton();
         // update the users losses if logged in
         this.updateRecord(false);
-        alert('Womp womp you lose.');
+        this.props.displayModal('loss');
+        alert('Womp womp you lose. Select New Game to play again!');
       }
+      this.props.forceRender();
     } else {
       alert('Please enter a full guess');
     }
