@@ -9,6 +9,7 @@ class NavButton extends Component {
     handleClick = () => {
         this.props.dispatch({type: 'NAVIGATE', payload: this.props.page.path});
         this.props.history.push(this.props.page.path);
+        this.props.forceRender();
     }
 
     render() {

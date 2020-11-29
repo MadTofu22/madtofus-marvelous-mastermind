@@ -18,10 +18,16 @@ class App extends Component {
     this.props.dispatch({ type: 'FETCH_USER' });
   }
 
+  // This function forces the game to re-render
+	forceRender = () => {
+		console.log('in game display force render');
+		this.forceUpdate();
+	}
+
   render() {
     return (
       <Router>
-        <Header />
+        <Header forceRender={this.forceRender}/>
 
         <Route exact path='/'>
           <Redirect to='/home' />

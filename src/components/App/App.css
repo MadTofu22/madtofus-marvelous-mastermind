@@ -7,7 +7,7 @@ body,
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
-  background-color: darkorchid;
+  background-color: rgba(153, 238, 255, 1);
 }
 
 img {

@@ -1,7 +1,7 @@
 .headerWrapper {
     position: fixed;
     top: 0;
-    background-color: rgba(153, 50, 204, 1);
+    background-color: rgba(150, 0, 200, 1);
     box-shadow: 0px 10px 5px black;
     display: flex;
     height: 90px;
@@ -30,15 +30,15 @@
 }
 
 .headerUsername {
-    margin: 10px 0px 23.5px 0px;
+    margin: 5px 0px;
     text-align: left;
     height: 30px;
     width: 144px;
 }
 
 .navButtonContainer {
-    background-color: rgba(255, 255, 255, .1);
-    border: 5px solid rgba(153, 50, 224);
+    background-color: rgba(255, 255, 255, .5);
+    border: 5px solid rgba(255, 255, 255, .5);
     border-radius: 50px;
     margin: 0px 6px;
     padding: 6px 12px;
@@ -53,7 +53,7 @@
 
 .navButtonContainer_active {
     background-color: rgba(153, 50, 224);
-    border: 5px solid rgba(153, 50, 224);
+    border: 5px solid rgba(255, 255, 255, .5);
     border-radius: 50px;
     margin: 0px 6px;
     padding: 6px 12px;

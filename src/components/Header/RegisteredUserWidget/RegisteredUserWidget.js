@@ -5,14 +5,23 @@ import { withRouter } from "react-router";
 
 class RegisteredUserWidget extends Component {
 
+    handleProfileClick = () => {
+      this.props.history.push(`/profile/${this.props.store.user.username}`);
+      this.props.forceRender();
+    }
+
     render () {
         return (
           <div className="logoutContainer">
-            <h1 className="headerUsername">{this.props.store.user.username}</h1>
+            <h2 className="headerUsername">{this.props.store.user.username}</h2>
             <button
               className="headerWidgetButton"
-              onClick={() => this.props.dispatch({type: 'LOGOUT'})}
-            >
+              onClick={this.handleProfileClick}>
+              Profile
+            </button>
+            <button
+              className="headerWidgetButton"
+              onClick={() => this.props.dispatch({type: 'LOGOUT'})}>
               Logout
             </button>
           </div>

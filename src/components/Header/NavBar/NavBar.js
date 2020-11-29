@@ -9,14 +9,9 @@ class NavBar extends Component {
 	render() {
 		return (
 			<div className='navBarWrapper'>
-				{/*
-				Add Profile components here 
-				will need conditional rendering
-				to decide if it has login or profile name
-				*/}
 
 				{this.props.store.pages.map(page => {
-					return <NavButton key={page.id} page={page} />
+					return <NavButton key={page.id} page={page} forceRender={this.props.forceRender}/>
 				})}
 			</div>
 		);

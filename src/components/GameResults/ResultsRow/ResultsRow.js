@@ -37,7 +37,6 @@ class ResultsRow extends Component {
 
   // This function generates the empty row text if there are no matching results
   getEmptyRowText = (currentRow, lastGuess) => {
-    console.log('in ResultsRow currentRow:', currentRow, 'lastGuess:', lastGuess);
     if (currentRow < lastGuess && lastGuess > 0) {
       return <h3>No Matches</h3>
     } else {

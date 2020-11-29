@@ -10,7 +10,7 @@ import UnregisteredUserWidget from './UnregisteredUserWidget/UnregisteredUserWid
 import RegisteredUserWidget from './RegisteredUserWidget/RegisteredUserWidget';
 
 class Header extends Component {
-	
+
 	render() {
 		return (
 			<div className='headerWrapper'>
@@ -22,7 +22,7 @@ class Header extends Component {
 						alt='User profile avatar'
 						onClick={() => this.props.history.push(`/profile/${this.props.store.user.username}`)}
 					/>
-					<RegisteredUserWidget />
+					<RegisteredUserWidget forceRender={this.props.forceRender}/>
 				</>
 				:
 				<>
@@ -31,10 +31,10 @@ class Header extends Component {
 						src={'/assets/images/default_avatar.jpg'}
 						alt='User profile avatar'
 					/>
-					<UnregisteredUserWidget />
+					<UnregisteredUserWidget forceRender={this.props.forceRender}/>
 				</>
 				}
-				<NavBar />
+				<NavBar forceRender={this.props.forceRender}/>
 			</div>
 		);
 	}

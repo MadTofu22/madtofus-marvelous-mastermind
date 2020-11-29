@@ -1,33 +1,6 @@
 const pages = (state = [], action) => {
 
 	switch (action.type) {
-		default:
-			return [
-				{
-					id: 1,
-					path: '/home',
-					label: 'Game',
-					isActive: true, // Default page so this will start as true
-				},
-				{
-					id: 2,
-					path: '/about',
-					label: 'About',
-					isActive: false,
-				},
-				{
-					id: 3,
-					path: '/instructions',
-					label: 'How to Play',
-					isActive: false,
-				},
-				{
-					id: 4,
-					path: '/ranks',
-					label: 'Leaderboards',
-					isActive: false,
-				},
-			];
 		case '/home':
 			return [
 				{
@@ -134,6 +107,33 @@ const pages = (state = [], action) => {
 					path: '/ranks',
 					label: 'Leaderboards',
 					isActive: true,
+				},
+			];
+		default:
+			return [
+				{
+					id: 1,
+					path: '/home',
+					label: 'Game',
+					isActive: true, // Default page so this will start as true
+				},
+				{
+					id: 2,
+					path: '/about',
+					label: 'About',
+					isActive: false,
+				},
+				{
+					id: 3,
+					path: '/instructions',
+					label: 'How to Play',
+					isActive: false,
+				},
+				{
+					id: 4,
+					path: '/ranks',
+					label: 'Leaderboards',
+					isActive: false,
 				},
 			];
 	}

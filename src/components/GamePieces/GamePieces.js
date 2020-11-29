@@ -117,7 +117,7 @@ class GamePieces extends Component {
         let indexInCode = code.indexOf(guess[index]); // get the index in the code array of the current guess marble being checked, -1 if not in the code
         console.log('passed first check, indexInCode =', indexInCode)
         if (indexInCode >= 0) { // checks if the color is a match to a marble in the code
-          if (results.indexOf(indexInCode) < 0) { // check to see if the index from the code has already been added to the results
+          if (results.indexOf(indexInCode) >= 0) { // check to see if the index from the code has already been added to the results
             results.push(indexInCode);
             console.log('found correct color, first match for the color, results =', results)
           } else { // if already in the results, check if there is a duplicate color in the code
