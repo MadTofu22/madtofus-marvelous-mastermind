@@ -27,12 +27,14 @@ class App extends Component {
           <Redirect to='/home' />
         </Route>
 
-        <Route exact path='/home' component={GameDisplay} />
-        <Route exact path='/about' component={AboutDisplay} />
-        <Route exact path='/instructions' component={InstructionsDisplay} />
-        <Route exact path='/ranks' component={LeaderboardDisplay} />
-        <Route path='/profile/:name' component={ProfileDisplay} />
-        <Route exact path='/register' component={RegistrationDisplay} />
+        <div className='bodyWrapper'>
+          <Route exact path='/home' component={GameDisplay} />
+          <Route exact path='/about' component={AboutDisplay} />
+          <Route exact path='/instructions' component={InstructionsDisplay} />
+          <Route exact path='/ranks' component={LeaderboardDisplay} />
+          <Route path='/profile/:name' component={ProfileDisplay} />
+          <Route exact path='/register' component={RegistrationDisplay} />
+        </div>
       </Router>
     );
   }
