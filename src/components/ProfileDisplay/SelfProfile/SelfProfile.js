@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import mapStoreToProps from "../../../redux/mapStoreToProps";
 import { withRouter } from "react-router";
 
+import UpdateCompleteModal from '../UpdateCompleteModal'
+
 class SelfProfile extends Component {
 
     constructor (props) {
@@ -13,7 +15,8 @@ class SelfProfile extends Component {
             bio: this.props.store.user.bio,
             avatar_url: this.props.store.user.avatar_url,
             first_name: this.props.store.user.first_name,
-            last_name: this.props.store.user.last_name
+            last_name: this.props.store.user.last_name,
+            displayModal: false,
         }
     }
 
@@ -24,8 +27,22 @@ class SelfProfile extends Component {
         });
     }
 
+    // This function updates the user profile data in the DB and pops up a modal to inform the user.
     updateProfile = () => {
         this.props.dispatch({type: 'UPDATE_PROFILE', payload: this.state});
+        this.setState({
+            ...this.state,
+            displayModal: true
+        });
+    }
+
+    // This function handles closing the modal window
+    handleModalClose = () => {
+        console.log('modal close clicked')
+        this.setState({
+            displayModal: false
+        });
+        this.forceUpdate();
     }
 
     deleteProfile = () => {
@@ -44,16 +61,15 @@ class SelfProfile extends Component {
     render() {
         return (
             <section className='profileWrapper' name='selfProfile'>
+                {this.state.displayModal ?
+                    <UpdateCompleteModal close={this.handleModalClose} />
+                    :
+                    <></>
+                }
                 {/* {JSON.stringify(this.props.store.profile)} */}
                 <div className='profileElementContainer' id='detailsContainer'>
-                    <img 
-                        className='profileAvatar'
-                        src={this.props.store.profile.avatar_url}
-                        alt={`Avatar for ${this.props.store.profile.username}`}
-                    />
-                    <br/>
-                    <label htmlFor='userAvatarUrlInput'>
-                        Avatar URL: <br/>
+                <label htmlFor='userAvatarUrlInput'>
+                        Avatar URL:
                         <input
                             type='text'
                             className='selfProfileInput'
@@ -66,6 +82,15 @@ class SelfProfile extends Component {
                             }
                         />
                     </label>
+                    <img 
+                        className='profileAvatar'
+                        src={this.props.store.profile.avatar_url}
+                        alt={`Avatar for ${this.props.store.profile.username}`}
+                    />
+                    <br/>
+                    
+                    <h3>Total Wins: {this.props.store.profile.total_wins}</h3>
+					<h3>Total Losses: {this.props.store.profile.total_losses}</h3>
                     <br/>
                     <label htmlFor='userFirstNameInput'>
                         First Name:<br/>

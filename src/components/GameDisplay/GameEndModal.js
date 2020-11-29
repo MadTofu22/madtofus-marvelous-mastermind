@@ -19,10 +19,11 @@ class GameEndModal extends Component {
     handleNewGame = () => {
         this.props.forceRender();
         this.setState({
-        checkGuessButtonDisabled: false,
+            checkGuessButtonDisabled: false,
         })
         this.props.dispatch({type: 'RESET_GAME', payload: this.props.generateCode()});
     }
+
 
     // This function handles populating the local state with the correct info
     setModalContents = (type) => {
