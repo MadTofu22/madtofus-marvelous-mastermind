@@ -55,6 +55,7 @@ function* fetchRanks() {
   try {
     const leaderboards = yield axios.get('/api/ranks');
     yield put({type: 'SET_RANKS', payload: leaderboards.data});
+    yield put({type: '/ranks'});
   } catch (error) {
     console.log('Error fetching leaderboard data', error);
   }

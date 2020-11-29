@@ -7,16 +7,18 @@ class NavButton extends Component {
 
     // This function handles moving the User to the next page
     handleClick = () => {
-        this.props.dispatch({type: 'NAVIGATE', payload: this.props.page.path});
+
         this.props.history.push(this.props.page.path);
+        this.props.dispatch({type: 'NAVIGATE', payload: this.props.page.path});
         this.props.forceRender();
+        console.log('in navButton component, this.props.page:', this.props.page)
     }
 
     render() {
         return (
           <div
             className={
-              this.props.page.isActive
+              this.props.isActive
                 ? "navButtonContainer_active"
                 : "navButtonContainer"
             }

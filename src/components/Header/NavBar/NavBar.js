@@ -10,8 +10,8 @@ class NavBar extends Component {
 		return (
 			<div className='navBarWrapper'>
 
-				{this.props.store.pages.map(page => {
-					return <NavButton key={page.id} page={page} forceRender={this.props.forceRender}/>
+				{this.props.store.pages.map((page, index) => {
+					return <NavButton key={page.id} page={page} isActive={this.props.store.pages[index].isActive} forceRender={() => this.forceUpdate()}/>
 				})}
 			</div>
 		);

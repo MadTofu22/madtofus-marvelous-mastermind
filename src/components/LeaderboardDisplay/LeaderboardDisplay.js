@@ -25,7 +25,7 @@ class LeaderboardDisplay extends Component {
         return (
             <section className='leaderboardDisplayWrapper'>
                 <h1>Leaderboard</h1>
-                <div classsName='leaderboardTable'>
+                <div className='leaderboardTable'>
                     <table>
                         <thead>
                             <tr>

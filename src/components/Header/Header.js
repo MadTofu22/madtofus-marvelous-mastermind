@@ -11,6 +11,20 @@ import RegisteredUserWidget from './RegisteredUserWidget/RegisteredUserWidget';
 
 class Header extends Component {
 
+	// This function forces the game to re-render
+	forceRender = () => {
+		this.forceUpdate();
+	}
+
+	handleAvatarClick = () => {
+		this.props.dispatch({
+			type: "FETCH_PROFILE",
+			payload: this.props.store.user.username,
+		  });
+		this.props.history.push(`/profile/${this.props.store.user.username}`)
+		this.props.forceRender();
+	}
+
 	render() {
 		return (
 			<div className='headerWrapper'>
@@ -20,9 +34,9 @@ class Header extends Component {
 						className='headerAvatar'
 						src={this.props.store.user.avatar_url}
 						alt='User profile avatar'
-						onClick={() => this.props.history.push(`/profile/${this.props.store.user.username}`)}
+						onClick={this.handleAvatarClick}
 					/>
-					<RegisteredUserWidget forceRender={this.props.forceRender}/>
+					<RegisteredUserWidget forceRender={this.forceRender}/>
 				</>
 				:
 				<>
@@ -31,10 +45,10 @@ class Header extends Component {
 						src={'/assets/images/default_avatar.jpg'}
 						alt='User profile avatar'
 					/>
-					<UnregisteredUserWidget forceRender={this.props.forceRender}/>
+					<UnregisteredUserWidget forceRender={this.forceRender}/>
 				</>
 				}
-				<NavBar forceRender={this.props.forceRender}/>
+				<NavBar forceRender={this.forceRender}/>
 			</div>
 		);
 	}
