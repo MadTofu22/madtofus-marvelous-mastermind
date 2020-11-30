@@ -6,7 +6,7 @@ This project is the culmination of knowledge I learned in Tiers 1 and 2 at [Prim
 
 ## Screenshot
 
-![Game Example](public/assets/images/game_example)
+![Game Example](public/assets/images/game_example.png)
 
 ### Prerequisites
 This project uses the following software:
