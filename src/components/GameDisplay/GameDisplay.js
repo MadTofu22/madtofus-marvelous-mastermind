@@ -15,6 +15,7 @@ class GameDisplay extends Component {
 		gameCount: 0,
 		displayModal: false,
 		modalType: '',
+		checkGuessDisabled: false,
 	}
 	
 	componentDidMount () {
@@ -29,10 +30,18 @@ class GameDisplay extends Component {
 
 	// This function handles creating a new game.
 	handleNewGame = () => {
-		this.setState({
-		  checkGuessButtonDisabled: false,
-		})
-		this.props.dispatch({type: 'RESET_GAME', payload: this.props.generateCode()});
+		this.props.dispatch({type: 'RESET_GAME', payload: this.generateCode()});
+		if (this.state.displayModal) {
+			this.setState({
+				...this.state,
+				displayModal: false,
+			});
+		} else {
+			this.setState({
+				...this.state,
+				checkGuessDisabled: false,
+			});
+		}
 		this.forceUpdate();
 	  }
 	
@@ -49,7 +58,7 @@ class GameDisplay extends Component {
 	}
 
 	// This function handles setting the local state modal type and toggling it to display
-	displayModal = (result) => {
+	setModal = (result) => {
 		let modalType = '';
 
 		if (this.props.store.user.id) {
@@ -68,17 +77,28 @@ class GameDisplay extends Component {
 
 		this.setState({
 			...this.state,
+			buttonDisabled: false,
 			displayModal: true,
 			modalType,
 		});
+		return true;
 	}
 
 	closeModal = () => {
 		this.setState({
 			...this.state,
+			checkGuessDisabled: true,
 			displayModal: false,
 			modalType: '',
 		});
+	}
+
+	toggleCheckGuessButton = () => {
+		this.setState({
+			...this.state,
+			checkGuessDisabled: !this.state.checkGuessDisabled,
+		});
+		this.forceUpdate();
 	}
 
 	render () {
@@ -88,13 +108,21 @@ class GameDisplay extends Component {
 					<GameEndModal 
 					className='modalContainer' 
 					modalType={this.state.modalType}
-					close={this.closeModal} />
+					close={this.closeModal}
+					generateCode={this.generateCode}
+					handleNewGame={this.handleNewGame} />
 					:
 					<></>
 				}
 				<GameResults />
 				<GameBoard />
-				<GamePieces generateCode={this.generateCode} forceRender={this.forceRender} displayModal={this.displayModal} />
+				<GamePieces 
+					generateCode={this.generateCode} 
+					forceRender={this.forceRender} 
+					displayModal={this.setModal} 
+					buttonDisabled={this.state.checkGuessDisabled}
+					toggleCheckGuessButton={this.toggleCheckGuessButton}
+					handleNewGame={this.handleNewGame} />
 			</section>
 		);
 	}

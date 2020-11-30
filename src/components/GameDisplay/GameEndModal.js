@@ -13,17 +13,8 @@ class GameEndModal extends Component {
 
     componentDidMount () {
         this.setModalContents(this.props.modalType);
+        this.forceUpdate();
     }
-
-    // This function handles resetting the game board
-    handleNewGame = () => {
-        this.setState({
-            checkGuessButtonDisabled: false,
-        })
-        this.props.dispatch({type: 'RESET_GAME', payload: this.props.generateCode()});
-        this.props.close();
-    }
-
 
     // This function handles populating the local state with the correct info
     setModalContents = (type) => {
@@ -42,7 +33,7 @@ class GameEndModal extends Component {
                     button: `Leaderboards`,
                 });
                 break;
-            case `user_lost`:
+            case `user_loss`:
                 this.setState({
                     header: `WOMP WOMP`,
                     text: `Looks like you weren't able to break the code.`,
@@ -75,7 +66,7 @@ class GameEndModal extends Component {
                     <button 
                         className='submitButton' 
                         id='newGameButton'
-                        onClick={this.handleNewGame} >
+                        onClick={this.props.handleNewGame} >
                         New Game
                     </button>
 

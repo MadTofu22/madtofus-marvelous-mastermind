@@ -1,6 +1,6 @@
-/* .leaderboardDisplayWrapper {
- width: 100%;
-} */
+.leaderboardDisplayWrapper {
+    text-align: center;
+}
 
 .leaderboardTableContainer {
     display: flex;

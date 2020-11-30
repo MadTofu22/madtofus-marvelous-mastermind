@@ -10,6 +10,13 @@ class GamePieces extends Component {
     displayModal: false,
   }
 
+  componentDidMount () {
+    this.setState({
+      checkGuessButtonDisabled: this.props.buttonDisabled,
+      displayModal: false,
+    });
+  }
+
   // This function handles checking the current row against the generated code
   handleCheckGuess = () => {
     const row = this.props.store.game.currentGuess;
@@ -17,18 +24,17 @@ class GamePieces extends Component {
 
     if (this.validateGuessRow(this.props.store.game.guesses[row-1])) {
       if(results.correctMarbles === 4) { // check for if the user wins
-        this.toggleCheckGuessButton();
+        this.props.toggleCheckGuessButton();
         this.updateRecord(true);
         this.props.displayModal('win');
       } else if (results.correctMarbles < 4 && row < 8) { // check if loser wins but game is not over
         this.updateResults(row, results);
       } else if (results.correctMarbles < 4 && row === 8) { // game over update
         this.updateResults(row, results);
-        this.toggleCheckGuessButton();
+        this.props.toggleCheckGuessButton();
         // update the users losses if logged in
         this.updateRecord(false);
         this.props.displayModal('loss');
-        alert('Womp womp you lose. Select New Game to play again!');
       }
       this.props.forceRender();
     } else {
@@ -64,7 +70,7 @@ class GamePieces extends Component {
 
   // This function handles making sure all for slots in the current guess row are filled when check guess is clicked
   validateGuessRow = (guessRow) => {
-    // console.log('guessRow', guessRow)
+    console.log('guessRow', guessRow)
     for (let marble of guessRow) {
       if (marble === 'empty') {
         return false;
@@ -77,55 +83,67 @@ class GamePieces extends Component {
   getResults = (guessRow) => {
     let winningCode = this.props.store.game.winningCode;
     let guess = this.props.store.game.guesses[guessRow];
-    // console.log('in getReuslts, winningCode=', winningCode, 'vs guess=', guess);
+    console.log('in getReuslts, winningCode=', winningCode, 'vs guess=', guess);
     let correctMarbles = this.getCorrectMarbles(winningCode, guess);
     let correctColors = this.getCorrectColors(winningCode, guess, correctMarbles);
     let results = {
       correctMarbles: correctMarbles.length,
       correctColors: correctColors.length,
     };
-    // console.log('RESULTS CHECK:', results)
+    console.log('RESULTS CHECK:', results)
     return results;
   }
 
+  // This function gets the indices of the correctly guessed marbles
+  getCorrectMarbles = (code=[], guess=[]) => {
+    let results = [];
+    for (let index in code) {
+      if (code[index] === guess[index]) {
+        results.push(Number(index));
+      }
+    }
+    return results;
+  }
+
+  // This function gets the indices of marbles in the code that have the correct color guessed
   getCorrectColors = (code=[], guess=[], correct=[]) => {
     let results = [];
 
-    // console.log('==============================')
-    // console.log('START CHECK FOR CORRECT COLORS')
-    // console.log('==============================')
-    // console.log('correct:', correct)
-    // console.log('code:', code)
-    // console.log('guess', guess)
+    console.log('==============================')
+    console.log('START CHECK FOR CORRECT COLORS')
+    console.log('==============================')
+    console.log('correct:', correct)
+    console.log('code:', code)
+    console.log('guess', guess)
 
     for(let codeIndex in code) {
       codeIndex = Number(codeIndex);
-      // console.log('--- NEW ITERATION ---')
-      // console.log('--- In code for loop ---')
-      // console.log('code index:', codeIndex)
+      console.log('--- NEW ITERATION ---')
+      console.log('--- In code for loop ---')
+      console.log('code index:', codeIndex)
       if (correct.indexOf(codeIndex) < 0 && results.indexOf(codeIndex) < 0) { // If this passes, the marble has not been found and added to correct
-        // console.log('--- PASSED initial check, codeIndex is not in the correct marble array or the results array ---')
+        console.log('--- PASSED initial check, codeIndex is not in the correct marble array or the results array ---')
         for (let guessIndex in guess) {
           guessIndex = Number(guessIndex);
-          // console.log('--- In guess for loop ---')
-          // console.log('guess index:', guessIndex)
-          if (code[codeIndex] === guess[guessIndex] && results.indexOf(codeIndex) < 0 ) { // This means a color match has been found and it is not in the results array already
-            // console.log('--- PASSED final check, color match has been found at guessIndex:', guessIndex, 'with codeIndex;', codeIndex)
+          console.log('--- In guess for loop ---')
+          console.log('guess index:', guessIndex)
+          if (code[codeIndex] === guess[guessIndex] && results.indexOf(codeIndex) < 0 && correct.indexOf(guessIndex) < 0) { // This means a color match has been found and it is not in the results array already
+            console.log('--- PASSED final check, color match has been found at guessIndex:', guessIndex, 'with codeIndex;', codeIndex)
             results.push(codeIndex);
           } else {
-            // console.log('Did not pass final check')
+            console.log('Did not pass final check')
           }
         }
       } else {
-        // console.log('Did not pass initial check')
+        console.log('Did not pass initial check')
       }
     }
-    // console.log('==============================')
-    // console.log('END CHECK FOR CORRECT COLORS')
-    // console.log('correctColors =', results)
-    // console.log('code:', code)
-    // console.log('guess', guess)
-    // console.log('==============================')
+    console.log('==============================')
+    console.log('END CHECK FOR CORRECT COLORS')
+    console.log('correctColors =', results)
+    console.log('code:', code)
+    console.log('guess', guess)
+    console.log('==============================')
     return results;
   }
 
@@ -139,18 +157,16 @@ class GamePieces extends Component {
     this.props.dispatch({type: 'UPDATE_HELD', payload: event.target.id});
   }
 
-  // This function handles resetting the game board
   handleNewGame = () => {
-    this.props.forceRender();
     this.setState({
       checkGuessButtonDisabled: false,
-    })
-    this.props.dispatch({type: 'RESET_GAME', payload: this.props.generateCode()});
+    });
   }
 
   render() {
     return (
       <div className='gameSidePanel'>
+        {JSON.stringify(this.props.store.game.winningCode)}
         <h2>Marble Bucket</h2>
         <div className='selectedDisplay'>
           <h3>Selected Marble:</h3>
@@ -170,7 +186,7 @@ class GamePieces extends Component {
           <button 
             className='submitButton' 
             id='checkGuessButton' 
-            disabled={this.state.checkGuessButtonDisabled} 
+            disabled={this.props.buttonDisabled} 
             onClick={this.handleCheckGuess}
           >
             Check Guess
@@ -178,7 +194,7 @@ class GamePieces extends Component {
           <button 
             className='submitButton' 
             id='newGameButton'
-            onClick={this.handleNewGame}
+            onClick={this.props.handleNewGame}
           >
             New Game
           </button>
