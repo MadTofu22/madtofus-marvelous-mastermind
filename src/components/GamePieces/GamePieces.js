@@ -121,15 +121,15 @@ class GamePieces extends Component {
       // console.log('--- NEW ITERATION ---')
       // console.log('--- In code for loop ---')
       // console.log('code index:', codeIndex)
-      if (correct.indexOf(codeIndex) < 0 && results.indexOf(codeIndex) < 0) { // If this passes, the marble has not been found and added to correct
+      if (correct.indexOf(codeIndex) < 0) { // If this passes, the marble has not been found and added to correct
         // console.log('--- PASSED initial check, codeIndex is not in the correct marble array or the results array ---')
         for (let guessIndex in guess) {
           guessIndex = Number(guessIndex);
           // console.log('--- In guess for loop ---')
           // console.log('guess index:', guessIndex)
-          if (code[codeIndex] === guess[guessIndex] && results.indexOf(codeIndex) < 0 && correct.indexOf(guessIndex) < 0) { // This means a color match has been found and it is not in the results array already
+          if (code[codeIndex] === guess[guessIndex] && results.indexOf(guessIndex) < 0 && correct.indexOf(guessIndex) < 0) { // This means a color match has been found and it is not in the results array already
             // console.log('--- PASSED final check, color match has been found at guessIndex:', guessIndex, 'with codeIndex;', codeIndex)
-            results.push(codeIndex);
+            results.push(guessIndex);
           } else {
             // console.log('Did not pass final check')
           }
