@@ -84,7 +84,8 @@ const winningCode = (state=[], action) => {
         default:
             return state;
         case 'SET_WINNING_CODE':
-            return action.payload;
+            return ['red', 'blue', 'yellow', 'white'];
+            // return action.payload;
     }
 }
 
