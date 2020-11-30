@@ -122,19 +122,21 @@
 .modalContainer {
     position: fixed; /* Stay in place */
     border: 10px solid rgba(255, 255, 255, 0.2);
-    border-radius: 10%;
+    border-radius: 20px;
     z-index: 2; /* Sit on top */
     justify-content: center;
     left: 25%;
-    top: 10%;
+    top: 15%;
+    /* margin-top: 5%; */
     width: 50%;
-    height: 450px;
+    height: 225px;
     background-color: darkorchid;
   }
   
 .modalContents {
+    text-align: center;
     background-color: rgba(255, 255, 255, .2);
-    margin: 45px auto;
+    margin: 5% auto;
     padding: 0px;
     border: 1px solid black;
     width: 80%;

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import mapStoreToProps from "../../redux/mapStoreToProps";
+import './AboutDisplay.css';
 
 class AboutDisplay extends Component {
     
@@ -8,9 +9,24 @@ class AboutDisplay extends Component {
         return (
             <section id='aboutDisplayWrapper'>
                 <h1>About MadTofu's Marvelous Mastermind</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elit odio, cursus vitae gravida ut, efficitur mollis ligula. Nulla ornare vulputate iaculis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce at ipsum ac libero tincidunt tincidunt ac sit amet leo. Duis sem ante, lobortis et ex ac, mollis porta quam. Vestibulum quis justo sit amet erat convallis tempus. Curabitur feugiat justo vel felis tincidunt luctus. Nam eget tortor quis nisl blandit blandit. Vestibulum et neque ut nisl placerat iaculis sed eu augue. Duis sed lectus malesuada, vulputate lorem id, interdum nunc. Curabitur fringilla facilisis justo, non accumsan nibh varius sit amet. Suspendisse cursus vel ipsum quis suscipit. Proin eu felis a nisl semper varius. Pellentesque pretium mi ac velit eleifend, vel auctor tortor aliquam. Etiam et lacus urna. Proin vitae tristique purus.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elit odio, cursus vitae gravida ut, efficitur mollis ligula. Nulla ornare vulputate iaculis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce at ipsum ac libero tincidunt tincidunt ac sit amet leo. Duis sem ante, lobortis et ex ac, mollis porta quam. Vestibulum quis justo sit amet erat convallis tempus. Curabitur feugiat justo vel felis tincidunt luctus. Nam eget tortor quis nisl blandit blandit. Vestibulum et neque ut nisl placerat iaculis sed eu augue. Duis sed lectus malesuada, vulputate lorem id, interdum nunc. Curabitur fringilla facilisis justo, non accumsan nibh varius sit amet. Suspendisse cursus vel ipsum quis suscipit. Proin eu felis a nisl semper varius. Pellentesque pretium mi ac velit eleifend, vel auctor tortor aliquam. Etiam et lacus urna. Proin vitae tristique purus.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elit odio, cursus vitae gravida ut, efficitur mollis ligula. Nulla ornare vulputate iaculis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce at ipsum ac libero tincidunt tincidunt ac sit amet leo. Duis sem ante, lobortis et ex ac, mollis porta quam. Vestibulum quis justo sit amet erat convallis tempus. Curabitur feugiat justo vel felis tincidunt luctus. Nam eget tortor quis nisl blandit blandit. Vestibulum et neque ut nisl placerat iaculis sed eu augue. Duis sed lectus malesuada, vulputate lorem id, interdum nunc. Curabitur fringilla facilisis justo, non accumsan nibh varius sit amet. Suspendisse cursus vel ipsum quis suscipit. Proin eu felis a nisl semper varius. Pellentesque pretium mi ac velit eleifend, vel auctor tortor aliquam. Etiam et lacus urna. Proin vitae tristique purus.</p>
+                <p>Welcome to MadTofu's Marvelous Mastermind! This project was designed and created by me, <b>Tom "MadTofu" Stutler</b>, as an independent project while studying at <b><a target='_blank' href='https://primeacademy.io'>Prime Digital Academy.</a></b> During this accelerated learning program we started with the basics of what a programming language is. After 16 weeks we are given the opportunity to present a full stack application to world!</p>
+                <p>While here you can play a wonderful code breaking game popularized by Mordecai Meirowitz in the 1970, Mastermind. Not only is this game highly entertaining, it also keeps your problem solving skills at a peak! You  must attempt to systematically break a code with one of 1256 possible solutions in only 8 guesses.</p>
+
+                <div>
+                    <h3>Technologies Used</h3>
+                    <ul className='techList'>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                        <li>React</li>
+                        <li>Redux</li>
+                        <li>Express</li>
+                        <li>Passport</li>
+                        <li>Node</li>
+                        <li>Postgres</li>
+                        <li>SQL</li>
+                    </ul>
+                </div>
             </section> 
         );
     }

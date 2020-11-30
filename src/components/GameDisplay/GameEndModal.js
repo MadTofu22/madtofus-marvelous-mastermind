@@ -28,7 +28,7 @@ class GameEndModal extends Component {
                 break;
             case `user_win`:
                 this.setState({
-                    header: `YOU WON!`,
+                    header: `!!!YOU WON!!!`,
                     text: `Congratulations, you broke the code on guess ${this.props.store.game.currentGuess}!`,
                     button: `Leaderboards`,
                 });
@@ -42,15 +42,15 @@ class GameEndModal extends Component {
                 break;
             case `guest_win`:
                 this.setState({
-                    header: `YOU WON`,
-                    text: `Congratulations, you broke the code on guess ${this.props.store.game.currentGuess}! Select register if you want to track future games.`,
+                    header: `!!!YOU WON!!!`,
+                    text: `Congratulations, you broke the code on guess ${this.props.store.game.currentGuess}! Please register an account if you would like to track future games.`,
                     button: `Register`,
                 });
                 break;
             case `guest_loss`:
                 this.setState({
                     header: `WOMP WOMP`,
-                    text: `Looks like you weren't able to break the code. Select register if you want to track future games.`,
+                    text: `Looks like you weren't able to break the code. Please register an account if you would like to track future games.`,
                     button: `Register`,
                 });
                 break;

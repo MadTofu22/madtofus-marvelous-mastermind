@@ -5,6 +5,7 @@ body,
 }
 
 body {
+  position: relative;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
   background-color: rgba(153, 238, 255, 1);
@@ -110,4 +111,13 @@ Form Treatment
 input {
   margin: 5px;
   margin-bottom: 10px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 0px;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
 }

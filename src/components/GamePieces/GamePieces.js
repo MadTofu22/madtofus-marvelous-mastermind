@@ -166,7 +166,6 @@ class GamePieces extends Component {
   render() {
     return (
       <div className='gameSidePanel'>
-        {JSON.stringify(this.props.store.game.winningCode)}
         <h2>Marble Bucket</h2>
         <div className='selectedDisplay'>
           <h3>Selected Marble:</h3>

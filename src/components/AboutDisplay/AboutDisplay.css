@@ -1,0 +1,10 @@
+#aboutDisplayWrapper {
+    text-align: center;
+    margin: 0% auto;
+    width: 80%;
+}
+.techList {
+    list-style-type: none;
+    padding: 0%;
+    margin: 0% auto;
+}
