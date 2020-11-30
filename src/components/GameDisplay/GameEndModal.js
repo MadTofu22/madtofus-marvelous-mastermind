@@ -17,11 +17,11 @@ class GameEndModal extends Component {
 
     // This function handles resetting the game board
     handleNewGame = () => {
-        this.props.forceRender();
         this.setState({
             checkGuessButtonDisabled: false,
         })
         this.props.dispatch({type: 'RESET_GAME', payload: this.props.generateCode()});
+        this.props.close();
     }
 
 
@@ -74,13 +74,15 @@ class GameEndModal extends Component {
                     <p>{this.state.text}</p>
                     <button 
                         className='submitButton' 
-                        id='newGameButton'>
+                        id='newGameButton'
+                        onClick={this.handleNewGame} >
                         New Game
                     </button>
 
                     <button 
                         className='submitButton' 
-                        id='closeModalButton'>
+                        id='closeModalButton'
+                        onClick={this.props.close} >
                         Close
                     </button>
                 </div>

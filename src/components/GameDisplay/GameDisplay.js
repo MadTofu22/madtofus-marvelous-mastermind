@@ -70,14 +70,25 @@ class GameDisplay extends Component {
 			...this.state,
 			displayModal: true,
 			modalType,
-		})
+		});
+	}
+
+	closeModal = () => {
+		this.setState({
+			...this.state,
+			displayModal: false,
+			modalType: '',
+		});
 	}
 
 	render () {
 		return (
 			<section className='gameWrapper'>
 				{this.state.displayModal ? 
-					<GameEndModal className='modalContainer' modalType={this.state.modalType}/>
+					<GameEndModal 
+					className='modalContainer' 
+					modalType={this.state.modalType}
+					close={this.closeModal} />
 					:
 					<></>
 				}
