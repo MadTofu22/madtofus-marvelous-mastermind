@@ -89,7 +89,7 @@
     border-radius: 20px;
     width: 90%;
     height: 90px;
-    margin: 1% auto;
+    margin: 4px auto;
     display: inline-flex;
     justify-content: center;
 }
@@ -104,8 +104,8 @@
 
 .resultsRowContainer {
     width: 90%;
-    height: 90px;
-    margin: 1% auto;
+    height: 92px;
+    margin: 4px auto;
     display: inline-flex;
     justify-content: center;
 }
@@ -115,7 +115,13 @@
     border-radius: 50%;
     width: 36px;
     height: 36px; 
-    margin: auto 1%;
+    margin: 28px 1%;
+}
+
+.resultsLabel {
+    border-radius: 50%;
+    font-size: 20px;
+    margin: 36px 0px;
 }
 
 /* GAME END MODAL STYLING */

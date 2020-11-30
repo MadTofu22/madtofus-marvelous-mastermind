@@ -38,9 +38,9 @@ class ResultsRow extends Component {
   // This function generates the empty row text if there are no matching results
   getEmptyRowText = (currentRow, lastGuess) => {
     if (currentRow < lastGuess && lastGuess > 0) {
-      return <h3>No Matches</h3>
+      return <h3 className='resultsLabel'>No Matches</h3>
     } else {
-      return <h3> </h3>
+      return <h3 className='resultsLabel'> </h3>
     }
   }
 

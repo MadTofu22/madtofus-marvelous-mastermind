@@ -9,7 +9,7 @@ class AboutDisplay extends Component {
         return (
             <section id='aboutDisplayWrapper'>
                 <h1>About MadTofu's Marvelous Mastermind</h1>
-                <p>Welcome to MadTofu's Marvelous Mastermind! This project was designed and created by me, <b>Tom "MadTofu" Stutler</b>, as an independent project while studying at <b><a target='_blank' href='https://primeacademy.io'>Prime Digital Academy.</a></b> During this accelerated learning program we started with the basics of what a programming language is. After 16 weeks we are given the opportunity to present a full stack application to world!</p>
+                <p>Welcome to MadTofu's Marvelous Mastermind! This project was designed and created by me, <b>Tom "MadTofu" Stutler</b>, as an independent project while studying at <b><a rel="noopener noreferrer" target='_blank' href='https://primeacademy.io'>Prime Digital Academy.</a></b> During this accelerated learning program we started with the basics of what a programming language is. After 16 weeks we are given the opportunity to present a full stack application to world!</p>
                 <p>While here you can play a wonderful code breaking game popularized by Mordecai Meirowitz in the 1970, Mastermind. Not only is this game highly entertaining, it also keeps your problem solving skills at a peak! You  must attempt to systematically break a code with one of 1256 possible solutions in only 8 guesses.</p>
 
                 <div>
