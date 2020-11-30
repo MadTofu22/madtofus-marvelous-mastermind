@@ -2,7 +2,7 @@
     position: fixed;
     top: 0;
     background-color: rgba(150, 0, 200, 1);
-    box-shadow: 0px 10px 5px black;
+    box-shadow: 0px 10px 10px 5px rgba(150, 0, 200, 1);
     display: flex;
     height: 90px;
     width: 100%;
