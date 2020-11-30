@@ -8,18 +8,6 @@ class ResultsRow extends Component {
     redCount: this.props.store.game.correctMarbles
   }
 
-  // formatRedIndicators = () => {
-  //   const correctMarbleCount = this.props.row.correctMarbles;
-  //   let returnText = null;
-    
-  //   for(let i=0; i<correctMarbleCount; i++) {
-  //     returnText += <div className='resultsIndicator red'></div>
-  //   }
-  //   console.log('in formatRedIndicators, returnText=', returnText);
-  //   return returnText;
-  // }
-
-  // This function gets the count for how many red and white pegs there should be, then adds them to the array of row indicators
   getRowIndicators = () => {
     const redCount = this.props.row.correctMarbles;
     const whiteCount = this.props.row.correctColors;

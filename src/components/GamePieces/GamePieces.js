@@ -70,7 +70,7 @@ class GamePieces extends Component {
 
   // This function handles making sure all for slots in the current guess row are filled when check guess is clicked
   validateGuessRow = (guessRow) => {
-    console.log('guessRow', guessRow)
+    // console.log('guessRow', guessRow)
     for (let marble of guessRow) {
       if (marble === 'empty') {
         return false;
@@ -83,14 +83,14 @@ class GamePieces extends Component {
   getResults = (guessRow) => {
     let winningCode = this.props.store.game.winningCode;
     let guess = this.props.store.game.guesses[guessRow];
-    console.log('in getReuslts, winningCode=', winningCode, 'vs guess=', guess);
+    // console.log('in getReuslts, winningCode=', winningCode, 'vs guess=', guess);
     let correctMarbles = this.getCorrectMarbles(winningCode, guess);
     let correctColors = this.getCorrectColors(winningCode, guess, correctMarbles);
     let results = {
       correctMarbles: correctMarbles.length,
       correctColors: correctColors.length,
     };
-    console.log('RESULTS CHECK:', results)
+    // console.log('RESULTS CHECK:', results)
     return results;
   }
 
@@ -109,41 +109,41 @@ class GamePieces extends Component {
   getCorrectColors = (code=[], guess=[], correct=[]) => {
     let results = [];
 
-    console.log('==============================')
-    console.log('START CHECK FOR CORRECT COLORS')
-    console.log('==============================')
-    console.log('correct:', correct)
-    console.log('code:', code)
-    console.log('guess', guess)
+    // console.log('==============================')
+    // console.log('START CHECK FOR CORRECT COLORS')
+    // console.log('==============================')
+    // console.log('correct:', correct)
+    // console.log('code:', code)
+    // console.log('guess', guess)
 
     for(let codeIndex in code) {
       codeIndex = Number(codeIndex);
-      console.log('--- NEW ITERATION ---')
-      console.log('--- In code for loop ---')
-      console.log('code index:', codeIndex)
+      // console.log('--- NEW ITERATION ---')
+      // console.log('--- In code for loop ---')
+      // console.log('code index:', codeIndex)
       if (correct.indexOf(codeIndex) < 0 && results.indexOf(codeIndex) < 0) { // If this passes, the marble has not been found and added to correct
-        console.log('--- PASSED initial check, codeIndex is not in the correct marble array or the results array ---')
+        // console.log('--- PASSED initial check, codeIndex is not in the correct marble array or the results array ---')
         for (let guessIndex in guess) {
           guessIndex = Number(guessIndex);
-          console.log('--- In guess for loop ---')
-          console.log('guess index:', guessIndex)
+          // console.log('--- In guess for loop ---')
+          // console.log('guess index:', guessIndex)
           if (code[codeIndex] === guess[guessIndex] && results.indexOf(codeIndex) < 0 && correct.indexOf(guessIndex) < 0) { // This means a color match has been found and it is not in the results array already
-            console.log('--- PASSED final check, color match has been found at guessIndex:', guessIndex, 'with codeIndex;', codeIndex)
+            // console.log('--- PASSED final check, color match has been found at guessIndex:', guessIndex, 'with codeIndex;', codeIndex)
             results.push(codeIndex);
           } else {
-            console.log('Did not pass final check')
+            // console.log('Did not pass final check')
           }
         }
       } else {
-        console.log('Did not pass initial check')
+        // console.log('Did not pass initial check')
       }
     }
-    console.log('==============================')
-    console.log('END CHECK FOR CORRECT COLORS')
-    console.log('correctColors =', results)
-    console.log('code:', code)
-    console.log('guess', guess)
-    console.log('==============================')
+    // console.log('==============================')
+    // console.log('END CHECK FOR CORRECT COLORS')
+    // console.log('correctColors =', results)
+    // console.log('code:', code)
+    // console.log('guess', guess)
+    // console.log('==============================')
     return results;
   }
 

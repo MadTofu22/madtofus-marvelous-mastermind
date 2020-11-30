@@ -24,7 +24,7 @@ class GameDisplay extends Component {
 
 	// This function forces the game to re-render
 	forceRender = () => {
-		console.log('in game display force render');
+		// console.log('in game display force render');
 		this.forceUpdate();
 	}
 
@@ -53,7 +53,7 @@ class GameDisplay extends Component {
 		for (let i=0; i<4; i++) {
 			winningCode.push(colors[Math.floor(Math.random() * colors.length)]); // Picks a random color then adds it to the winning code
 		}
-		console.log('winning code:', winningCode);
+		// console.log('winning code:', winningCode);
 		return winningCode;
 	}
 
