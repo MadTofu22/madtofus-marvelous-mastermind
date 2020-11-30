@@ -39,7 +39,7 @@ class LeaderboardDisplay extends Component {
                             {this.props.store.leaderboard.map(user => {
                                 return (
                                     <tr key={this.props.store.leaderboard.indexOf(user)}>
-                                        <td>{this.props.store.leaderboard.indexOf(user)}</td>
+                                        <td>{this.props.store.leaderboard.indexOf(user)+1}</td>
                                         <td onClick={() => this.handleLinkToProfile(user.username)}>{user.username}</td>
                                         <td>{user.total_wins}</td>
                                         <td>{user.total_losses}</td>
