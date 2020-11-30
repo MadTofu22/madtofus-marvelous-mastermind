@@ -11,7 +11,7 @@ class NavButton extends Component {
         this.props.history.push(this.props.page.path);
         this.props.dispatch({type: 'NAVIGATE', payload: this.props.page.path});
         this.props.forceRender();
-        console.log('in navButton component, this.props.page:', this.props.page)
+        // console.log('in navButton component, this.props.page:', this.props.page)
     }
 
     render() {

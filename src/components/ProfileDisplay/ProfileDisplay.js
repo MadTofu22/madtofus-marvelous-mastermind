@@ -24,7 +24,7 @@ class ProfileDisplay extends Component {
 
     render () {
         const isSelfProfile = this.props.store.user.username === this.props.store.profile.username;
-        console.log('new profile page loaded for', this.props.match.params.name);
+        // console.log('new profile page loaded for', this.props.match.params.name);
         return (
           <>
             {isSelfProfile ?
