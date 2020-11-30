@@ -8,7 +8,7 @@ This project is the culmination of knowledge I learned in Tiers 1 and 2 at [Prim
 
 ![Game Example](public/assets/images/game_example.png)
 
-### Prerequisites
+## Prerequisites
 This project uses the following software:
 
 - [Node.js](https://nodejs.org/en/)
@@ -20,7 +20,7 @@ Please follow these instructions if you would like to install this project for a
 
 1. Download or clone down the source code.
 2. Open the folder in your favorite editor.
-3. Create a Postgresql Database called 'madtofus_marvelous_mastermind'.
+3. Create a PostgreSQL Database called 'madtofus_marvelous_mastermind'.
 4. Execute the commands in the database.sql file.
 5. In a terminal navigate to the project folder.
 6. Run `npm install` in the terminal.
