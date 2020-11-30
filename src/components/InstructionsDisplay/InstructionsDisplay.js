@@ -7,11 +7,11 @@ class InstructionsDisplay extends Component {
     
     render () {
         return (
-            <section id='instructionsDisplayWrapper'>
+            <div id='instructionsDisplayWrapper'>
                 <div className='instructionsColumnContainer'>
                     <h2>Game Instructions</h2>
                     <h3>The goal of this game is to guess the hidden code of 4 color marbles. You have 8 total Guesses to match the hidden code!</h3>
-                    <ol>
+                    <ol className='instructionsList'>
                         <li>Select one of the 6 marbles from the Marble Bucket on the right.</li>
                         <li>Add the marble to one of the 4 guess slots in the top most row of the Guesses section.</li>
                         <li>When all 4 slots are filled for the first guess row click on the Check Guess button below the Marble Bucket.</li>
@@ -21,7 +21,7 @@ class InstructionsDisplay extends Component {
                                     Each red dot indicates a marble is in the correct slot.
                                 </li>
                                 <li>
-                                    Each white dot inicates a marbles color is correct, but not in the correct spot.
+                                    Each white dot indicates a marbles color is correct, but not in the correct spot.
                                 </li>
                             </ul>
                         </li>
@@ -36,7 +36,7 @@ class InstructionsDisplay extends Component {
                     <h4>At any time you may select New Game to start over.</h4>
                     
                 </div>
-            </section> 
+            </div> 
         );
     }
 }

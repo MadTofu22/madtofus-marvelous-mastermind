@@ -1,10 +1,16 @@
 #instructionsDisplayWrapper {
     display: inline-flex;
     justify-content: center;
+    width: 100%;
 }
 
 .instructionsColumnContainer {
     width: 50%;
     margin: 0% 2.5%;
     text-align: center;
+}
+
+.instructionsList {
+    text-align: left;
+    margin: 0% 10%;
 }

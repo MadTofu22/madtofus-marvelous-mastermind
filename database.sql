@@ -5,7 +5,7 @@ CREATE TABLE "user" (
     "password" VARCHAR (1000) NOT NULL,
     "first_name" VARCHAR (32),
     "last_name" VARCHAR (32),
-    "avatar_url" TEXT,
+    "avatar_url" TEXT DEFAULT '/assets/images/MadTofu.jpg',
     "bio" TEXT,
     "total_wins" INT NOT NULL DEFAULT 0,
     "total_losses" INT NOT NULL DEFAULT 0
