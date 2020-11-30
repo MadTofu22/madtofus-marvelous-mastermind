@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { withRouter } from 'react-router';
+import './RegistrationDisplay.css';
 
 class RegistrationDisplay extends Component {
 	state = {
@@ -49,32 +50,35 @@ class RegistrationDisplay extends Component {
 					{this.props.store.errors.registrationMessage}
 				</h3>
 				)}
-
+				
 				<form name='registrationForm' onSubmit={this.handleSubmit}>
-					<label htmlFor='usernameInput'>
-						Username:
-						<input
-							required
-							type='text'
-							name='usernameInput'
-							placeholder='Enter a username'
-							onChange={(event) => this.handleChangeFor(event, 'username')}
-						/>
-					</label>
-
-					<label htmlFor='passwordInput'>
-						Password:
-						<input
-							required
-							type='text'
-							name='passwordInput'
-							placeholder='Enter a password'
-							onChange={(event) => this.handleChangeFor(event, 'password')}
-						/>
-					</label>
+				<h3>Please enter a Username and Password for your account.</h3>
+					<label htmlFor='usernameInput'>Username:</label>
+					<br/>
+					<input
+						required
+						type='text'
+						name='usernameInput'
+						placeholder='Enter a username'
+						onChange={(event) => this.handleChangeFor(event, 'username')}
+					/>
+					<br/>
+					<label htmlFor='passwordInput'>Password:</label>
+					<br/>
+					<input
+						required
+						type='password'
+						name='passwordInput'
+						placeholder='Enter a password'
+						onChange={(event) => this.handleChangeFor(event, 'password')}
+					/>
+			
+					<br/>
 					<button className='submitButton' name='registrationSubmit'>Register</button>
+					<br/>
+					<button type='button' className='submitButton' name='registrationCancel' onClick={this.handleCancel}>Cancel</button>
 				</form>
-				<button className='submitButton' name='registrationCancel' onClick={this.handleCancel}>Cancel</button>
+
 			</div>
     	);
 	}
