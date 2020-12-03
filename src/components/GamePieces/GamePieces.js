@@ -117,6 +117,7 @@ class GamePieces extends Component {
     // console.log('guess', guess)
 
     for(let codeIndex in code) {
+      let hasCodeIndexBeenUsed = false;
       codeIndex = Number(codeIndex);
       // console.log('--- NEW ITERATION ---')
       // console.log('--- In code for loop ---')
@@ -127,9 +128,10 @@ class GamePieces extends Component {
           guessIndex = Number(guessIndex);
           // console.log('--- In guess for loop ---')
           // console.log('guess index:', guessIndex)
-          if (code[codeIndex] === guess[guessIndex] && results.indexOf(guessIndex) < 0 && correct.indexOf(guessIndex) < 0) { // This means a color match has been found and it is not in the results array already
+          if (code[codeIndex] === guess[guessIndex] && results.indexOf(guessIndex) < 0 && correct.indexOf(guessIndex) < 0 && !hasCodeIndexBeenUsed) { // This means a color match has been found and it is not in the results array already
             // console.log('--- PASSED final check, color match has been found at guessIndex:', guessIndex, 'with codeIndex;', codeIndex)
             results.push(guessIndex);
+            hasCodeIndexBeenUsed = true;
           } else {
             // console.log('Did not pass final check')
           }
@@ -145,10 +147,6 @@ class GamePieces extends Component {
     // console.log('guess', guess)
     // console.log('==============================')
     return results;
-  }
-
-  validateMarbleHasNotBeenUsed = (codeIndex, codeArray, resultsArray) => {
-
   }
 
   // This function updates the game state in the redux stor with the currently selected marble
